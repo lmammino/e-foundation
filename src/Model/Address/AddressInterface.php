@@ -23,7 +23,7 @@ interface AddressInterface extends TimestampableInterface
      *
      * @param string $firstName
      *
-     * @return AddressInterface
+     * @return $this
      */
     public function setFirstName($firstName);
 
@@ -39,7 +39,7 @@ interface AddressInterface extends TimestampableInterface
      *
      * @param string $lastName
      *
-     * @return AddressInterface
+     * @return $this
      */
     public function setLastName($lastName);
 
@@ -55,7 +55,7 @@ interface AddressInterface extends TimestampableInterface
      *
      * @param string $companyName
      *
-     * @return AddressInterface
+     * @return $this
      */
     public function setCompanyName($companyName);
 
@@ -71,7 +71,7 @@ interface AddressInterface extends TimestampableInterface
      *
      * @param string $companyIdentifier
      *
-     * @return AddressInterface
+     * @return $this
      */
     public function setCompanyIdentifier($companyIdentifier);
 
@@ -87,7 +87,7 @@ interface AddressInterface extends TimestampableInterface
      *
      * @param CountryInterface $country
      *
-     * @return AddressInterface
+     * @return $this
      */
     public function setCountry(CountryInterface $country);
 
@@ -103,7 +103,7 @@ interface AddressInterface extends TimestampableInterface
      *
      * @param ProvinceInterface $province
      *
-     * @return AddressInterface
+     * @return $this
      */
     public function setProvince(ProvinceInterface $province);
 
@@ -119,7 +119,7 @@ interface AddressInterface extends TimestampableInterface
      *
      * @param string $street
      *
-     * @return AddressInterface
+     * @return $this
      */
     public function setStreet($street);
 
@@ -135,7 +135,7 @@ interface AddressInterface extends TimestampableInterface
      *
      * @param string $city
      *
-     * @return AddressInterface
+     * @return $this
      */
     public function setCity($city);
 
@@ -151,7 +151,7 @@ interface AddressInterface extends TimestampableInterface
      *
      * @param string $postCode
      *
-     * @return AddressInterface
+     * @return $this
      */
     public function setPostCode($postCode);
 } 

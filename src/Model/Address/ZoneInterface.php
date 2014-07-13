@@ -30,7 +30,7 @@ interface ZoneInterface
      *
      * @param string $name
      *
-     * @return ZoneInterface
+     * @return $this
      */
     public function setName($name);
 
@@ -46,7 +46,7 @@ interface ZoneInterface
      *
      * @param string $type
      *
-     * @return ZoneInterface
+     * @return $this
      */
     public function setType($type);
 
@@ -62,7 +62,7 @@ interface ZoneInterface
      *
      * @param Collection $members
      *
-     * @return ZoneInterface
+     * @return $this
      */
     public function setMembers(Collection $members);
 
@@ -71,7 +71,7 @@ interface ZoneInterface
      *
      * @param ZoneMemberInterface $member
      *
-     * @return ZoneInterface
+     * @return $this
      */
     public function addMember(ZoneMemberInterface $member);
 
@@ -89,7 +89,7 @@ interface ZoneInterface
      *
      * @param ZoneMemberInterface $member
      *
-     * @return ZoneInterface
+     * @return $this
      */
     public function removeMember(ZoneMemberInterface $member);
 

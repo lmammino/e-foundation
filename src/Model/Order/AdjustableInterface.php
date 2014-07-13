@@ -23,7 +23,7 @@ interface AdjustableInterface
      *
      * @param Collection $adjustments
      *
-     * @return AdjustableInterface
+     * @return $this
      */
     public function setAdjustments(Collection $adjustments);
 
@@ -32,7 +32,7 @@ interface AdjustableInterface
      *
      * @param AdjustmentInterface $adjustment
      *
-     * @return AdjustableInterface
+     * @return $this
      */
     public function addAdjustment(AdjustmentInterface $adjustment);
 
@@ -50,14 +50,14 @@ interface AdjustableInterface
      *
      * @param AdjustmentInterface $adjustment
      *
-     * @return AdjustableInterface
+     * @return $this
      */
     public function removeAdjustment(AdjustmentInterface $adjustment);
 
     /**
      * Removes all adjustments
      *
-     * @return AdjustableInterface
+     * @return $this
      */
     public function clearAdjustments();
 
@@ -71,7 +71,7 @@ interface AdjustableInterface
     /**
      * Recalculates the adjustment amount
      *
-     * @return AdjustableInterface
+     * @return $this
      */
     public function calculateAdjustmentTotal();
 

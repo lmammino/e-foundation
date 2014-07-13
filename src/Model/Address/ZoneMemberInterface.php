@@ -21,7 +21,7 @@ interface ZoneMemberInterface
      *
      * @param string $name
      *
-     * @return ZoneMemberInterface
+     * @return $this
      */
     public function setName($name);
 
@@ -37,7 +37,7 @@ interface ZoneMemberInterface
      *
      * @param ZoneInterface|null $parentZone
      *
-     * @return ZoneMemberInterface
+     * @return $this
      */
     public function setParentZone(ZoneInterface $parentZone = null);
 } 

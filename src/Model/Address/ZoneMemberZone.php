@@ -29,7 +29,7 @@ class ZoneMemberZone extends ZoneMember
      *
      * @param ZoneInterface $zone
      *
-     * @return ZoneMemberZone
+     * @return $this
      */
     public function setZone(ZoneInterface $zone)
     {

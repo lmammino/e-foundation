@@ -23,7 +23,7 @@ interface AdjustmentInterface extends TimestampableInterface
      *
      * @param AdjustableInterface $adjustable
      *
-     * @return AdjustmentInterface
+     * @return $this
      */
     public function setAdjustable(AdjustableInterface $adjustable);
 
@@ -39,7 +39,7 @@ interface AdjustmentInterface extends TimestampableInterface
      *
      * @param string $label
      *
-     * @return AdjustmentInterface
+     * @return $this
      */
     public function setLabel($label);
 
@@ -55,7 +55,7 @@ interface AdjustmentInterface extends TimestampableInterface
      *
      * @param string $description
      *
-     * @return AdjustmentInterface
+     * @return $this
      */
     public function setDescription($description);
 
@@ -71,9 +71,9 @@ interface AdjustmentInterface extends TimestampableInterface
      *
      * @param float $amount
      *
-     * @return AdjustmentInterface
+     * @return $this
      */
-    public function setAumount($amount);
+    public function setAmount($amount);
 
     /**
      * Check if it is neutral
@@ -87,7 +87,7 @@ interface AdjustmentInterface extends TimestampableInterface
      *
      * @param boolean $neutral
      *
-     * @return AdjustmentInterface
+     * @return $this
      */
     public function setNeutral($neutral);
 
