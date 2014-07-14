@@ -7,6 +7,7 @@ use LMammino\EFoundation\Model\TimestampableInterface;
 use LMammino\EFoundation\Model\SoftDeletableInterface;
 
 use Doctrine\Common\Collections\Collection;
+use Money\Money;
 
 /**
  * Interface OrderInterface
@@ -110,7 +111,7 @@ interface OrderInterface extends AdjustableInterface, TimestampableInterface, So
     /**
      * Gets the total price for all the items
      *
-     * @return float
+     * @return Money
      */
     public function getItemsTotal();
 
@@ -124,14 +125,14 @@ interface OrderInterface extends AdjustableInterface, TimestampableInterface, So
     /**
      * Get the total price for the whole order (includes order specific adjustments such as taxes, shipping and so on)
      *
-     * @return float
+     * @return Money
      */
     public function getTotal();
 
     /**
      * Set the total amount for the whole order
      *
-     * @param float $total
+     * @param Money $total
      *
      * @return $this
      */

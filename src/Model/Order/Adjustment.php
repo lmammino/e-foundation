@@ -4,6 +4,8 @@ namespace LMammino\EFoundation\Model\Order;
 
 use LMammino\EFoundation\Model\TimestampableTrait;
 
+use Money\Money;
+
 /**
  * Class Adjustment
  *
@@ -29,9 +31,9 @@ class Adjustment implements AdjustmentInterface
     protected $description;
 
     /**
-     * @var float $amount
+     * @var Money $amount
      */
-    protected $amount = 0;
+    protected $amount;
 
     /**
      * @var bool $neutral
@@ -103,7 +105,7 @@ class Adjustment implements AdjustmentInterface
     /**
      * {@inheritDoc}
      */
-    public function setAmount($amount)
+    public function setAmount(Money $amount)
     {
         $this->amount = $amount;
 
@@ -133,7 +135,11 @@ class Adjustment implements AdjustmentInterface
      */
     public function isCharge()
     {
-        return ($this->amount > 0);
+        if (null === $this->amount) {
+            throw new \BadMethodCallException('No amount set');
+        }
+
+        return $this->amount->isPositive();
     }
 
     /**
@@ -141,6 +147,10 @@ class Adjustment implements AdjustmentInterface
      */
     public function isCredit()
     {
-        return ($this->amount < 0);
+        if (null === $this->amount) {
+            throw new \BadMethodCallException('No amount set');
+        }
+
+        return $this->amount->isNegative();
     }
 }

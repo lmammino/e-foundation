@@ -4,6 +4,9 @@ namespace LMammino\EFoundation\Tests\Model\Order;
 
 use LMammino\EFoundation\Model\Order\Adjustment;
 
+use Money\Currency;
+use Money\Money;
+
 /**
  * Class AdjustmentTest
  *
@@ -84,7 +87,7 @@ class AdjustmentTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_handle_an_amount()
     {
-        $amount = 22.5;
+        $amount = new Money(2250, new Currency('USD'));
         $this->adjustment->setAmount($amount);
         $this->assertEquals($amount, $this->adjustment->getAmount());
     }
@@ -92,9 +95,9 @@ class AdjustmentTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_have_0_amount_by_default()
+    public function it_should_have_null_amount_by_default()
     {
-        $this->assertSame(0, $this->adjustment->getAmount());
+        $this->assertNull($this->adjustment->getAmount());
     }
 
     /**
@@ -102,7 +105,7 @@ class AdjustmentTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_consider_positive_amount_as_charge()
     {
-        $amount = 22.5;
+        $amount = new Money(2250, new Currency('USD'));
         $this->adjustment->setAmount($amount);
         $this->assertTrue($this->adjustment->isCharge());
         $this->assertFalse($this->adjustment->isCredit());
@@ -113,7 +116,7 @@ class AdjustmentTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_consider_negative_amount_as_credit()
     {
-        $amount = -22.5;
+        $amount = new Money(-2250, new Currency('USD'));
         $this->adjustment->setAmount($amount);
         $this->assertTrue($this->adjustment->isCredit());
         $this->assertFalse($this->adjustment->isCharge());
@@ -124,8 +127,28 @@ class AdjustmentTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_consider_no_charge_nor_credit_if_zero_amount()
     {
+        $amount = new Money(0, new Currency('USD'));
+        $this->adjustment->setAmount($amount);
         $this->assertFalse($this->adjustment->isCharge());
         $this->assertFalse($this->adjustment->isCredit());
+    }
+
+    /**
+     * @test
+     * @expectedException \BadMethodCallException
+     */
+    public function it_should_throw_exception_if_no_amount_has_been_given_and_is_credit_is_called()
+    {
+        $this->adjustment->isCredit();
+    }
+
+    /**
+     * @test
+     * @expectedException \BadMethodCallException
+     */
+    public function it_should_throw_exception_if_no_amount_has_been_given_and_is_charge_is_called()
+    {
+        $this->adjustment->isCharge();
     }
 
 }

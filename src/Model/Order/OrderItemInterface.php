@@ -2,6 +2,8 @@
 
 namespace LMammino\EFoundation\Model\Order;
 
+use Money\Money;
+
 /**
  * Interface OrderItemInterface
  *
@@ -28,34 +30,34 @@ interface OrderItemInterface extends AdjustableInterface, OrderAwareInterface
     /**
      * Get unit price
      *
-     * @return float
+     * @return Money
      */
     public function getUnitPrice();
 
     /**
      * Set unit price
      *
-     * @param float $unitPrice
+     * @param Money $unitPrice
      *
      * @return $this
      */
-    public function setUnitPrice($unitPrice);
+    public function setUnitPrice(Money $unitPrice);
 
     /**
      * get the total for the item
      *
-     * @return float
+     * @return Money
      */
     public function getTotal();
 
     /**
      * Set the total for the item
      *
-     * @param float $total
+     * @param Money $total
      *
      * @return $this
      */
-    public function setTotal($total);
+    public function setTotal(Money $total);
 
     /**
      * Calculates the total for the item
