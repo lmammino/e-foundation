@@ -2,14 +2,14 @@
 
 namespace LMammino\EFoundation\Model\Order;
 
-use Money\Money;
+use LMammino\EFoundation\Model\TimestampableInterface;
 
 /**
  * Interface OrderItemInterface
  *
  * @package LMammino\EFoundation\Model\Order
  */
-interface OrderItemInterface extends AdjustableInterface, OrderAwareInterface
+interface OrderItemInterface extends AdjustableInterface, OrderAwareInterface, TimestampableInterface
 {
     /**
      * Get quantity
@@ -30,34 +30,34 @@ interface OrderItemInterface extends AdjustableInterface, OrderAwareInterface
     /**
      * Get unit price
      *
-     * @return Money
+     * @return integer
      */
     public function getUnitPrice();
 
     /**
      * Set unit price
      *
-     * @param Money $unitPrice
+     * @param integer $unitPrice
      *
      * @return $this
      */
-    public function setUnitPrice(Money $unitPrice);
+    public function setUnitPrice($unitPrice);
 
     /**
      * get the total for the item
      *
-     * @return Money
+     * @return integer
      */
     public function getTotal();
 
     /**
      * Set the total for the item
      *
-     * @param Money $total
+     * @param integer $total
      *
      * @return $this
      */
-    public function setTotal(Money $total);
+    public function setTotal($total);
 
     /**
      * Calculates the total for the item
@@ -76,11 +76,11 @@ interface OrderItemInterface extends AdjustableInterface, OrderAwareInterface
     public function equals(OrderItemInterface $orderItem);
 
     /**
-     * Merges two order items and returns the resulting one
+     * Merges two order items. The current order item will result with an increased quantity
      *
      * @param OrderItemInterface $orderItem
      *
-     * @return OrderItemInterface
+     * @return $this
      */
     public function merge(OrderItemInterface $orderItem);
 

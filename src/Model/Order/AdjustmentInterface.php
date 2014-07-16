@@ -4,8 +4,6 @@ namespace LMammino\EFoundation\Model\Order;
 
 use LMammino\EFoundation\Model\TimestampableInterface;
 
-use Money\Money;
-
 /**
  * Interface AdjustmentInterface
  *
@@ -23,11 +21,11 @@ interface AdjustmentInterface extends TimestampableInterface
     /**
      * Set the adjustable subject
      *
-     * @param AdjustableInterface $adjustable
+     * @param AdjustableInterface|null $adjustable
      *
      * @return $this
      */
-    public function setAdjustable(AdjustableInterface $adjustable);
+    public function setAdjustable(AdjustableInterface $adjustable = null);
 
     /**
      * Get label
@@ -64,18 +62,18 @@ interface AdjustmentInterface extends TimestampableInterface
     /**
      * Get amount
      *
-     * @return Money
+     * @return integer
      */
     public function getAmount();
 
     /**
      * Set amount
      *
-     * @param Money $amount
+     * @param integer $amount
      *
      * @return $this
      */
-    public function setAmount(Money $amount);
+    public function setAmount($amount);
 
     /**
      * Check if it is neutral

@@ -4,9 +4,6 @@ namespace LMammino\EFoundation\Tests\Model\Order;
 
 use LMammino\EFoundation\Model\Order\Adjustment;
 
-use Money\Currency;
-use Money\Money;
-
 /**
  * Class AdjustmentTest
  *
@@ -43,6 +40,15 @@ class AdjustmentTest extends \PHPUnit_Framework_TestCase
         $adjustable = $this->getMock('\LMammino\EFoundation\Model\Order\AdjustableInterface');
         $this->adjustment->setAdjustable($adjustable);
         $this->assertEquals($adjustable, $this->adjustment->getAdjustable());
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_clear_adjustable()
+    {
+        $this->adjustment->setAdjustable(null);
+        $this->assertNull($this->adjustment->getAdjustable());
     }
 
     /**
@@ -87,7 +93,7 @@ class AdjustmentTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_handle_an_amount()
     {
-        $amount = new Money(2250, new Currency('USD'));
+        $amount = 2250;
         $this->adjustment->setAmount($amount);
         $this->assertEquals($amount, $this->adjustment->getAmount());
     }
@@ -105,7 +111,7 @@ class AdjustmentTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_consider_positive_amount_as_charge()
     {
-        $amount = new Money(2250, new Currency('USD'));
+        $amount = 2250;
         $this->adjustment->setAmount($amount);
         $this->assertTrue($this->adjustment->isCharge());
         $this->assertFalse($this->adjustment->isCredit());
@@ -116,7 +122,7 @@ class AdjustmentTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_consider_negative_amount_as_credit()
     {
-        $amount = new Money(-2250, new Currency('USD'));
+        $amount = -2250;
         $this->adjustment->setAmount($amount);
         $this->assertTrue($this->adjustment->isCredit());
         $this->assertFalse($this->adjustment->isCharge());
@@ -127,7 +133,7 @@ class AdjustmentTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_consider_no_charge_nor_credit_if_zero_amount()
     {
-        $amount = new Money(0, new Currency('USD'));
+        $amount = 0;
         $this->adjustment->setAmount($amount);
         $this->assertFalse($this->adjustment->isCharge());
         $this->assertFalse($this->adjustment->isCredit());
