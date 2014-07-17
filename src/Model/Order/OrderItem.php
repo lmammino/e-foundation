@@ -4,9 +4,6 @@ namespace LMammino\EFoundation\Model\Order;
 
 use LMammino\EFoundation\Model\TimestampableTrait;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-
 /**
  * Class OrderItem
  *
@@ -16,6 +13,9 @@ class OrderItem implements OrderItemInterface
 {
     use OrderAwareTrait;
     use TimestampableTrait;
+    use AdjustableTrait {
+        AdjustableTrait::__construct as private __adjustableConstruct;
+    }
 
     /**
      * @var float $quantity
@@ -33,21 +33,11 @@ class OrderItem implements OrderItemInterface
     protected $total;
 
     /**
-     * @var Collection $adjustments
-     */
-    protected $adjustments;
-
-    /**
-     * @var integer $adjustmentsTotal
-     */
-    protected $adjustmentsTotal;
-
-    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->adjustments = new ArrayCollection();
+        $this->__adjustableConstruct();
     }
 
     /**
@@ -106,98 +96,6 @@ class OrderItem implements OrderItemInterface
     public function setTotal($total)
     {
         $this->total = $total;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getAdjustments()
-    {
-        return $this->adjustments;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setAdjustments(Collection $adjustments)
-    {
-        $this->adjustmentsTotal = null;
-        $this->adjustments = $adjustments;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function addAdjustment(AdjustmentInterface $adjustment)
-    {
-        if (!$this->hasAdjustment($adjustment)) {
-            $this->adjustmentsTotal = null;
-            $adjustment->setAdjustable($this);
-            $this->adjustments->add($adjustment);
-        }
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function hasAdjustment(AdjustmentInterface $adjustment)
-    {
-        return $this->adjustments->contains($adjustment);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function removeAdjustment(AdjustmentInterface $adjustment)
-    {
-        if ($this->hasAdjustment($adjustment)) {
-            $this->adjustmentsTotal = null;
-            $adjustment->setAdjustable(null);
-            $this->adjustments->removeElement($adjustment);
-        }
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function clearAdjustments()
-    {
-        $this->adjustmentsTotal = null;
-        $this->adjustments->clear();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getAdjustmentTotal()
-    {
-        if (null === $this->adjustmentsTotal) {
-            $this->calculateAdjustmentsTotal();
-        }
-
-        return $this->adjustmentsTotal;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function calculateAdjustmentsTotal()
-    {
-        $this->adjustmentsTotal = 0;
-
-        foreach ($this->adjustments as $adjustment) {
-            if (!$adjustment->isNeutral()) {
-                $this->adjustmentsTotal += $adjustment->getAmount();
-            }
-        }
 
         return $this;
     }
