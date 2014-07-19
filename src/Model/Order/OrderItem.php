@@ -2,6 +2,7 @@
 
 namespace LMammino\EFoundation\Model\Order;
 
+use LMammino\EFoundation\Model\IdentifiableTrait;
 use LMammino\EFoundation\Model\TimestampableTrait;
 
 /**
@@ -11,8 +12,9 @@ use LMammino\EFoundation\Model\TimestampableTrait;
  */
 class OrderItem implements OrderItemInterface
 {
-    use OrderAwareTrait;
+    use IdentifiableTrait;
     use TimestampableTrait;
+    use OrderAwareTrait;
     use AdjustableTrait {
         AdjustableTrait::__construct as private __adjustableConstruct;
     }

@@ -2,6 +2,7 @@
 
 namespace LMammino\EFoundation\Model\Order;
 
+use LMammino\EFoundation\Model\IdentifiableTrait;
 use LMammino\EFoundation\Model\TimestampableTrait;
 
 /**
@@ -11,6 +12,7 @@ use LMammino\EFoundation\Model\TimestampableTrait;
  */
 class Adjustment implements AdjustmentInterface
 {
+    use IdentifiableTrait;
     use TimestampableTrait;
 
     /**

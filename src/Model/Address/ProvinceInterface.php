@@ -2,12 +2,14 @@
 
 namespace LMammino\EFoundation\Model\Address;
 
+use LMammino\EFoundation\Model\IdentifiableInterface;
+
 /**
  * Interface ProvinceInterface
  *
  * @package LMammino\EFoundation\Model\Address
  */
-interface ProvinceInterface
+interface ProvinceInterface extends IdentifiableInterface
 {
     /**
      * Get name

@@ -1,20 +1,19 @@
 <?php
 
-
 namespace LMammino\EFoundation\Model\Order;
 
+use LMammino\EFoundation\Model\IdentifiableInterface;
 use LMammino\EFoundation\Model\TimestampableInterface;
 use LMammino\EFoundation\Model\SoftDeletableInterface;
 
 use Doctrine\Common\Collections\Collection;
-use Money\Money;
 
 /**
  * Interface OrderInterface
  *
  * @package LMammino\EFoundation\Model\Order
  */
-interface OrderInterface extends AdjustableInterface, TimestampableInterface, SoftDeletableInterface
+interface OrderInterface extends AdjustableInterface, IdentifiableInterface, TimestampableInterface, SoftDeletableInterface
 {
     /**
      * State constants

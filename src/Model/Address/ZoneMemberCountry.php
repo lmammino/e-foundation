@@ -1,6 +1,5 @@
 <?php
 
-
 namespace LMammino\EFoundation\Model\Address;
 
 /**

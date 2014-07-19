@@ -1,7 +1,8 @@
 <?php
 
-
 namespace LMammino\EFoundation\Model\Address;
+
+use LMammino\EFoundation\Model\IdentifiableTrait;
 
 /**
  * Class ZoneMember
@@ -10,6 +11,8 @@ namespace LMammino\EFoundation\Model\Address;
  */
 abstract class ZoneMember implements ZoneMemberInterface
 {
+    use IdentifiableTrait;
+    
     /**
      * @var string $name
      */

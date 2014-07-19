@@ -2,6 +2,7 @@
 
 namespace LMammino\EFoundation\Model\Order;
 
+use LMammino\EFoundation\Model\IdentifiableInterface;
 use LMammino\EFoundation\Model\TimestampableInterface;
 
 /**
@@ -9,7 +10,7 @@ use LMammino\EFoundation\Model\TimestampableInterface;
  *
  * @package LMammino\EFoundation\Model\Order
  */
-interface AdjustmentInterface extends TimestampableInterface
+interface AdjustmentInterface extends IdentifiableInterface, TimestampableInterface
 {
     /**
      * Get the adjustable subject

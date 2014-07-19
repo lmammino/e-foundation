@@ -1,7 +1,8 @@
 <?php
 
-
 namespace LMammino\EFoundation\Model\Address;
+
+use LMammino\EFoundation\Model\IdentifiableTrait;
 
 /**
  * Class Province
@@ -10,11 +11,21 @@ namespace LMammino\EFoundation\Model\Address;
  */
 class Province implements ProvinceInterface
 {
+    use IdentifiableTrait;
 
+    /**
+     * @var string $name
+     */
     protected $name;
 
+    /**
+     * @var string $isoName
+     */
     protected $isoName;
 
+    /**
+     * @var CountryInterface $country
+     */
     protected $country;
 
     /**

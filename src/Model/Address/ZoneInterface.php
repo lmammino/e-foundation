@@ -2,6 +2,8 @@
 
 namespace LMammino\EFoundation\Model\Address;
 
+use LMammino\EFoundation\Model\IdentifiableInterface;
+
 use Doctrine\Common\Collections\Collection;
 
 /**
@@ -9,7 +11,7 @@ use Doctrine\Common\Collections\Collection;
  *
  * @package LMammino\EFoundation\Model\Address
  */
-interface ZoneInterface
+interface ZoneInterface extends IdentifiableInterface
 {
     /**
      * Type constants

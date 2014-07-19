@@ -2,11 +2,12 @@
 
 namespace LMammino\EFoundation\Model\Order;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-
+use LMammino\EFoundation\Model\IdentifiableTrait;
 use LMammino\EFoundation\Model\SoftDeletableTrait;
 use LMammino\EFoundation\Model\TimestampableTrait;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * Class Order
@@ -15,7 +16,7 @@ use LMammino\EFoundation\Model\TimestampableTrait;
  */
 class Order implements OrderInterface
 {
-
+    use IdentifiableTrait;
     use TimestampableTrait;
     use SoftDeletableTrait;
     use AdjustableTrait {

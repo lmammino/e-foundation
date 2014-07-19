@@ -2,6 +2,7 @@
 
 namespace LMammino\EFoundation\Model\Address;
 
+use LMammino\EFoundation\Model\IdentifiableTrait;
 use LMammino\EFoundation\Model\TimestampableTrait;
 
 /**
@@ -12,6 +13,7 @@ use LMammino\EFoundation\Model\TimestampableTrait;
 class Address implements AddressInterface
 {
     use TimestampableTrait;
+    use IdentifiableTrait;
 
     /**
      * @var string $firstName
