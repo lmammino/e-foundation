@@ -13,7 +13,9 @@ use LMammino\EFoundation\Model\TimestampableTrait;
 class OrderItem implements OrderItemInterface
 {
     use IdentifiableTrait;
-    use TimestampableTrait;
+    use TimestampableTrait {
+        TimestampableTrait::__construct as private __timestampableConstruct;
+    }
     use OrderAwareTrait;
     use AdjustableTrait {
         AdjustableTrait::__construct as private __adjustableConstruct;
@@ -39,6 +41,7 @@ class OrderItem implements OrderItemInterface
      */
     public function __construct()
     {
+        $this->__timestampableConstruct();
         $this->__adjustableConstruct();
     }
 

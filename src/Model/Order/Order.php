@@ -17,7 +17,9 @@ use Doctrine\Common\Collections\Collection;
 class Order implements OrderInterface
 {
     use IdentifiableTrait;
-    use TimestampableTrait;
+    use TimestampableTrait {
+        TimestampableTrait::__construct as private __timestampableConstruct;
+    }
     use SoftDeletableTrait;
     use AdjustableTrait {
         AdjustableTrait::__construct as private __adjustableConstruct;
@@ -54,6 +56,7 @@ class Order implements OrderInterface
     public function __construct()
     {
         $this->items = new ArrayCollection();
+        $this->__timestampableConstruct();
         $this->__adjustableConstruct();
     }
 

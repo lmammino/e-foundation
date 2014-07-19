@@ -6,6 +6,11 @@ bldr:
             tasks:
                 - cleanDoc
                 - buildDoc
+        test:
+            description: Run the test suite
+            tasks:
+                - testPhpUnit
+
     tasks:
         cleanDoc:
             description: Clean up files
@@ -21,3 +26,5 @@ bldr:
                     type: exec
                     executable: vendor/bin/sami.php 
                     arguments: ["update", "doc/config.php"]
+        testPhpUnit:
+            description: PhpUnit tests

@@ -12,7 +12,9 @@ use LMammino\EFoundation\Model\TimestampableTrait;
  */
 class Address implements AddressInterface
 {
-    use TimestampableTrait;
+    use TimestampableTrait {
+        TimestampableTrait::__construct as private __timestampableConstruct;
+    }
     use IdentifiableTrait;
 
     /**
@@ -59,6 +61,14 @@ class Address implements AddressInterface
      * @var string $postCode
      */
     protected $postCode;
+
+    /**
+     * Construct
+     */
+    public function __construct()
+    {
+        $this->__timestampableConstruct();
+    }
 
     /**
      * {@inheritDoc}

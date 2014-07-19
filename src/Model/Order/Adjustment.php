@@ -13,7 +13,9 @@ use LMammino\EFoundation\Model\TimestampableTrait;
 class Adjustment implements AdjustmentInterface
 {
     use IdentifiableTrait;
-    use TimestampableTrait;
+    use TimestampableTrait {
+        TimestampableTrait::__construct as private __timestampableConstruct;
+    }
 
     /**
      * @var AdjustableInterface $adjustable
@@ -39,6 +41,14 @@ class Adjustment implements AdjustmentInterface
      * @var boolean $neutral
      */
     protected $neutral = false;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->__timestampableConstruct();
+    }
 
     /**
      * {@inheritDoc}

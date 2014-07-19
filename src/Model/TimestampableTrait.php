@@ -20,6 +20,14 @@ trait TimestampableTrait
     protected $updatedAt;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
      * Get created at
      *
      * @return \DateTime
