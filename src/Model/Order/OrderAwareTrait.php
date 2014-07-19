@@ -16,7 +16,9 @@ trait OrderAwareTrait
     protected $order;
 
     /**
-     * {@inheritDoc}
+     * Get order
+     *
+     * @return OrderInterface
      */
     public function getOrder()
     {
@@ -24,9 +26,13 @@ trait OrderAwareTrait
     }
 
     /**
-     * {@inheritDoc}
+     * Set order
+     *
+     * @param OrderInterface|null $order
+     *
+     * @return $this
      */
-    public function setOrder(OrderInterface $order)
+    public function setOrder(OrderInterface $order = null)
     {
         $this->order = $order;
 

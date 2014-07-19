@@ -50,6 +50,7 @@ trait AdjustableTrait
     public function setAdjustments(Collection $adjustments)
     {
         $this->adjustmentsTotal = null;
+        $this->onAdjustmentsChange();
         $this->adjustments = $adjustments;
 
         return $this;
@@ -66,6 +67,7 @@ trait AdjustableTrait
     {
         if (!$this->hasAdjustment($adjustment)) {
             $this->adjustmentsTotal = null;
+            $this->onAdjustmentsChange();
             $adjustment->setAdjustable($this);
             $this->adjustments->add($adjustment);
         }
@@ -111,6 +113,7 @@ trait AdjustableTrait
     public function clearAdjustments()
     {
         $this->adjustmentsTotal = null;
+        $this->onAdjustmentsChange();
         $this->adjustments->clear();
     }
 
@@ -144,6 +147,15 @@ trait AdjustableTrait
         }
 
         return $this;
+    }
+
+    /**
+     * Function called every time the adjustment changes
+     * it can be redefined to add some logic when using the trait
+     */
+    private function onAdjustmentsChange()
+    {
+        // does nothing by default
     }
 
 }

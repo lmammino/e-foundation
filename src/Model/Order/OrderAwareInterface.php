@@ -19,10 +19,10 @@ interface OrderAwareInterface
     /**
      * Set order
      *
-     * @param OrderInterface $order
+     * @param OrderInterface|null $order
      *
      * @return $this
      */
-    public function setOrder(OrderInterface $order);
+    public function setOrder(OrderInterface $order = null);
 
 } 

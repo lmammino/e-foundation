@@ -110,6 +110,32 @@ class OrderItemTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function it_should_recalculate_total_when_needed()
+    {
+        $quantity = 2.5;
+        $unitPrice = 10;
+        $discount = -10;
+        $expectedTotal1 = 25;
+        $expectedTotal2 = 15;
+
+        $adjustment = $this->getMock('\LMammino\EFoundation\Model\Order\AdjustmentInterface');
+        $adjustment->expects($this->once())
+                   ->method('getAmount')
+                   ->willReturn($discount);
+
+        $this->orderItem->setQuantity($quantity)
+                        ->setUnitPrice($unitPrice);
+
+        $this->assertEquals($expectedTotal1, $this->orderItem->getTotal());
+
+        $this->orderItem->addAdjustment($adjustment);
+
+        $this->assertEquals($expectedTotal2, $this->orderItem->getTotal());
+    }
+
+    /**
+     * @test
+     */
     public function it_should_have_a_default_total_of_zero()
     {
         $this->assertEquals(0, $this->orderItem->getTotal());

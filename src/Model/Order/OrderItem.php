@@ -135,4 +135,12 @@ class OrderItem implements OrderItemInterface
 
         return $this;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    private function onAdjustmentsChange()
+    {
+        $this->total = null;
+    }
 }

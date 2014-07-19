@@ -33,7 +33,7 @@ interface OrderInterface extends AdjustableInterface, TimestampableInterface, So
      *
      * @return boolean
      */
-    public function isComplete();
+    public function isCompleted();
 
     /**
      * Mark the order as complete
@@ -111,7 +111,7 @@ interface OrderInterface extends AdjustableInterface, TimestampableInterface, So
     /**
      * Gets the total price for all the items
      *
-     * @return Money
+     * @return integer
      */
     public function getItemsTotal();
 
@@ -125,14 +125,14 @@ interface OrderInterface extends AdjustableInterface, TimestampableInterface, So
     /**
      * Get the total price for the whole order (includes order specific adjustments such as taxes, shipping and so on)
      *
-     * @return Money
+     * @return integer
      */
     public function getTotal();
 
     /**
      * Set the total amount for the whole order
      *
-     * @param Money $total
+     * @param integer $total
      *
      * @return $this
      */
