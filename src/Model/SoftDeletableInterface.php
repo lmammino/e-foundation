@@ -31,4 +31,4 @@ interface SoftDeletableInterface
      * @return $this
      */
     public function setDeletedAt(\DateTime $deletedAt = null);
-} 
+}

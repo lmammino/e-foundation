@@ -42,4 +42,4 @@ interface ZoneMemberInterface extends IdentifiableInterface
      * @return $this
      */
     public function setParentZone(ZoneInterface $parentZone = null);
-} 
+}

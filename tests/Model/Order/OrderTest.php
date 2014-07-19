@@ -1,6 +1,6 @@
 <?php
 
-namespace LMammino\EFoundation\Tests\Model\Order;
+namespace LMammino\EFoundation\tests\Model\Order;
 
 use LMammino\EFoundation\Model\Order\Order;
 
@@ -361,6 +361,4 @@ class OrderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedTotal3, $this->order->getTotal());
     }
 
-
 }
- 

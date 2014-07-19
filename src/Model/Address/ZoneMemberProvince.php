@@ -37,4 +37,4 @@ class ZoneMemberProvince extends ZoneMember
 
         return $this;
     }
-} 
+}

@@ -40,4 +40,4 @@ interface TimestampableInterface
      * @return $this
      */
     public function setUpdatedAt(\DateTime $updatedAt);
-} 
+}

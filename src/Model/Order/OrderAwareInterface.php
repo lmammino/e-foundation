@@ -25,4 +25,4 @@ interface OrderAwareInterface
      */
     public function setOrder(OrderInterface $order = null);
 
-} 
+}

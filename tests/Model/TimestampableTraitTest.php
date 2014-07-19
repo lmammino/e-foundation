@@ -43,4 +43,3 @@ class TimestampableTraitTest extends \PHPUnit_Framework_TestCase
     }
 
 }
- 

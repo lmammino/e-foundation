@@ -1,6 +1,6 @@
 <?php
 
-namespace LMammino\EFoundation\Tests\Model\Order;
+namespace LMammino\EFoundation\tests\Model\Order;
 
 /**
  * Class OrderAwareTraitTest
@@ -32,4 +32,3 @@ class OrderAwareTraitTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($order, $this->orderAware->getOrder());
     }
 }
- 

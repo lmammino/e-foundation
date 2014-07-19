@@ -63,4 +63,3 @@ class ZoneMemberTest extends \PHPUnit_Framework_TestCase
     }
 
 }
- 

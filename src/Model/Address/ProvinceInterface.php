@@ -58,4 +58,4 @@ interface ProvinceInterface extends IdentifiableInterface
      * @return $this
      */
     public function setCountry(CountryInterface $country);
-} 
+}

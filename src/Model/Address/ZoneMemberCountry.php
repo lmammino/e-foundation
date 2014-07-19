@@ -38,4 +38,4 @@ class ZoneMemberCountry extends ZoneMember
         return $this;
     }
 
-} 
+}

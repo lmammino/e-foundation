@@ -85,4 +85,4 @@ interface OrderItemInterface extends AdjustableInterface, IdentifiableInterface,
      */
     public function merge(OrderItemInterface $orderItem);
 
-} 
+}

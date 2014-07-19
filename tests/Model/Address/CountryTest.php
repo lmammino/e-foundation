@@ -1,6 +1,5 @@
 <?php
 
-
 namespace LMammino\Tests\EFoundation\Model\Address;
 
 use LMammino\EFoundation\Model\Address\Country;
@@ -86,4 +85,3 @@ class CountryTest extends \PHPUnit_Framework_TestCase
     }
 
 }
- 

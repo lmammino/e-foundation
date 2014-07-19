@@ -174,4 +174,4 @@ interface OrderInterface extends AdjustableInterface, IdentifiableInterface, Tim
      */
     public function setState($state);
 
-} 
+}

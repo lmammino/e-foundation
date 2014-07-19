@@ -1,6 +1,5 @@
 <?php
 
-
 namespace LMammino\Tests\EFoundation\Model\Address;
 
 use LMammino\EFoundation\Model\Address\Province;
@@ -63,8 +62,4 @@ class ProvinceTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($country, $this->province->getCountry());
     }
 
-
-
-
 }
- 

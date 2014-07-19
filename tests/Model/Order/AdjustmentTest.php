@@ -1,6 +1,6 @@
 <?php
 
-namespace LMammino\EFoundation\Tests\Model\Order;
+namespace LMammino\EFoundation\tests\Model\Order;
 
 use LMammino\EFoundation\Model\Order\Adjustment;
 
@@ -158,4 +158,3 @@ class AdjustmentTest extends \PHPUnit_Framework_TestCase
     }
 
 }
- 

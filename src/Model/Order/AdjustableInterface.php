@@ -75,4 +75,4 @@ interface AdjustableInterface
      */
     public function calculateAdjustmentsTotal();
 
-} 
+}

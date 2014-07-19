@@ -155,4 +155,4 @@ interface AddressInterface extends IdentifiableInterface, TimestampableInterface
      * @return $this
      */
     public function setPostCode($postCode);
-} 
+}

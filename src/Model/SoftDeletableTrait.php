@@ -48,4 +48,4 @@ trait SoftDeletableTrait
         return $this;
     }
 
-} 
+}

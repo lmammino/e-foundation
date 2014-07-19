@@ -1,6 +1,5 @@
 <?php
 
-
 namespace LMammino\EFoundation\Model\Order;
 
 /**
@@ -38,4 +37,4 @@ trait OrderAwareTrait
 
         return $this;
     }
-} 
+}

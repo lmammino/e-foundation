@@ -106,4 +106,4 @@ interface AdjustmentInterface extends IdentifiableInterface, TimestampableInterf
      */
     public function isCredit();
 
-} 
+}

@@ -12,7 +12,7 @@ use LMammino\EFoundation\Model\IdentifiableTrait;
 abstract class ZoneMember implements ZoneMemberInterface
 {
     use IdentifiableTrait;
-    
+
     /**
      * @var string $name
      */

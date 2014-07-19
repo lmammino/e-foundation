@@ -77,4 +77,3 @@ class SoftDeletableTraitTest extends \PHPUnit_Framework_TestCase
     }
 
 }
- 

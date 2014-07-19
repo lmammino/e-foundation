@@ -95,4 +95,4 @@ interface ZoneInterface extends IdentifiableInterface
      */
     public function removeMember(ZoneMemberInterface $member);
 
-} 
+}

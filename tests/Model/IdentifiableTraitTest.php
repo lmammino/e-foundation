@@ -1,6 +1,6 @@
 <?php
 
-namespace LMammino\EFoundation\Tests\Model;
+namespace LMammino\EFoundation\tests\Model;
 
 /**
  * Class IdentifiableTraitTest
@@ -33,4 +33,3 @@ class IdentifiableTraitTest extends \PHPUnit_Framework_TestCase
     }
 
 }
- 

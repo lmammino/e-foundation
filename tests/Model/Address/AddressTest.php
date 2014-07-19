@@ -159,7 +159,4 @@ ADDR;
         $this->assertEquals($expected, (string) $this->address);
     }
 
-
-
 }
- 

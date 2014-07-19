@@ -15,4 +15,4 @@ interface IdentifiableInterface
      * @return string
      */
     public function getId();
-} 
+}
