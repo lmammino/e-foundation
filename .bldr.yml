@@ -1,0 +1,23 @@
+bldr:
+    name: LMammino/Efoundation
+    profiles:
+        doc:
+            description: Generates API doc
+            tasks:
+                - cleanDoc
+                - buildDoc
+    tasks:
+        cleanDoc:
+            description: Clean up files
+            calls:
+                -
+                    type: filesystem:remove
+                    task: filesystem:remove
+                    files: ['doc/build', 'doc/cache']
+        buildDoc:
+            description: Build the documentation
+            calls:
+                -
+                    type: exec
+                    executable: vendor/bin/sami.php 
+                    arguments: ["update", "doc/config.php"]
