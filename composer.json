@@ -15,7 +15,8 @@
         "mathiasverraes/money": "~1.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.3"
+        "phpunit/phpunit": "~4.3",
+        "sami/sami": "~2.0"
     },
     "autoload": {
         "psr-4": {
