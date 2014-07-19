@@ -3,7 +3,7 @@
 namespace LMammino\EFoundation\Model;
 
 /**
- * Class SoftDeletableTrait
+ * Trait SoftDeletableTrait
  *
  * @package LMammino\EFoundation\Model
  */

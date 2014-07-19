@@ -4,7 +4,7 @@
 namespace LMammino\EFoundation\Model\Order;
 
 /**
- * Class OrderAwareTrait
+ * Trait OrderAwareTrait
  *
  * @package LMammino\EFoundation\Model\Order
  */

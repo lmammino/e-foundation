@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Class AdjustableTrait
+ * Trait AdjustableTrait
  *
  * @package LMammino\EFoundation\Model\Order
  */

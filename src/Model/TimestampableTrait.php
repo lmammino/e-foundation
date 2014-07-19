@@ -3,7 +3,7 @@
 namespace LMammino\EFoundation\Model;
 
 /**
- * Class TimestampableTrait
+ * Trait TimestampableTrait
  *
  * @package LMammino\EFoundation\Model
  */
