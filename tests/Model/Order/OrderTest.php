@@ -71,14 +71,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase
         $now = new \DateTime();
         $completedAt = $this->order->getCompletedAt();
 
-        $diff = $now->diff($completedAt);
-
-        $this->assertEquals(0, $diff->y);
-        $this->assertEquals(0, $diff->m);
-        $this->assertEquals(0, $diff->d);
-        $this->assertEquals(0, $diff->h);
-        $this->assertEquals(0, $diff->i);
-        $this->assertTrue(0 <= $diff->s && 1 > $diff->s);
+        $this->assertEquals($now->getTimestamp(), $completedAt->getTimestamp(), '', 1);
     }
 
     /**
