@@ -19,7 +19,8 @@ class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
      */
     protected function setup()
     {
-        $this->adjustableTrait = $this->getMockForAbstractClass('\LMammino\EFoundation\Tests\Dummy\Model\Order\DummyAdjustable');
+        $this->adjustableTrait =
+            $this->getMockForAbstractClass('\LMammino\EFoundation\Tests\Dummy\Model\Order\DummyAdjustable');
     }
 
     /**

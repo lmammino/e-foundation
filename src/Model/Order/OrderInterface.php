@@ -13,7 +13,11 @@ use Doctrine\Common\Collections\Collection;
  *
  * @package LMammino\EFoundation\Model\Order
  */
-interface OrderInterface extends AdjustableInterface, IdentifiableInterface, TimestampableInterface, SoftDeletableInterface
+interface OrderInterface extends
+    AdjustableInterface,
+    IdentifiableInterface,
+    TimestampableInterface,
+    SoftDeletableInterface
 {
     /**
      * State constants
@@ -173,5 +177,4 @@ interface OrderInterface extends AdjustableInterface, IdentifiableInterface, Tim
      * @return $this
      */
     public function setState($state);
-
 }

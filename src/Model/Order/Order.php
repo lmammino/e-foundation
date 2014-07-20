@@ -285,5 +285,4 @@ class Order implements OrderInterface
     {
         $this->total = null;
     }
-
 }

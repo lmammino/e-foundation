@@ -263,5 +263,4 @@ class Address implements AddressInterface
 
         return implode("\n", $data);
     }
-
 }

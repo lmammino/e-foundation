@@ -1,6 +1,7 @@
 <?php
 
 namespace LMammino\Tests\EFoundation\Model\Address;
+
 use LMammino\EFoundation\Model\Address\ZoneMemberCountry;
 
 /**

@@ -157,5 +157,4 @@ trait AdjustableTrait
     {
         // does nothing by default
     }
-
 }

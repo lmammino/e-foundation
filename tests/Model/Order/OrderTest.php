@@ -353,5 +353,4 @@ class OrderTest extends \PHPUnit_Framework_TestCase
         $this->order->addAdjustment($adjustment);
         $this->assertEquals($expectedTotal3, $this->order->getTotal());
     }
-
 }

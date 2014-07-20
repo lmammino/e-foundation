@@ -37,5 +37,4 @@ class ZoneMemberZone extends ZoneMember
 
         return $this;
     }
-
 }

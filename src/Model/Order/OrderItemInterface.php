@@ -10,7 +10,11 @@ use LMammino\EFoundation\Model\TimestampableInterface;
  *
  * @package LMammino\EFoundation\Model\Order
  */
-interface OrderItemInterface extends AdjustableInterface, IdentifiableInterface, OrderAwareInterface, TimestampableInterface
+interface OrderItemInterface extends
+    AdjustableInterface,
+    IdentifiableInterface,
+    OrderAwareInterface,
+    TimestampableInterface
 {
     /**
      * Get quantity
@@ -84,5 +88,4 @@ interface OrderItemInterface extends AdjustableInterface, IdentifiableInterface,
      * @return $this
      */
     public function merge(OrderItemInterface $orderItem);
-
 }

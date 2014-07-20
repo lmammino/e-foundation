@@ -5,6 +5,7 @@ bldr:
             description: default build task
             tasks:
                 - lintPhp
+                - phpcs
                 - testPhpUnit
                 - cleanDoc
                 - buildDoc
@@ -53,3 +54,10 @@ bldr:
                         - { path: [src, tests], files: *.php, recursive: true }
                     executable: php
                     arguments: [-l]
+        phpcs:
+            description: Runs the PHP Code Sniffer
+            calls:
+                -
+                    type: exec
+                    executable: vendor/bin/phpcs
+                    arguments: ["--standard=PSR2", "src/"]

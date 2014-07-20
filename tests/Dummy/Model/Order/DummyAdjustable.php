@@ -9,5 +9,4 @@ abstract class DummyAdjustable implements AdjustableInterface
 {
 
     use AdjustableTrait;
-
 }

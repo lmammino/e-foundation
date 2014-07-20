@@ -47,5 +47,4 @@ trait SoftDeletableTrait
 
         return $this;
     }
-
 }

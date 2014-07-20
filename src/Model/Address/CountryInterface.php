@@ -87,5 +87,4 @@ interface CountryInterface extends IdentifiableInterface
      * @return $this
      */
     public function removeProvince(ProvinceInterface $province);
-
 }

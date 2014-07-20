@@ -74,5 +74,4 @@ interface AdjustableInterface
      * @return $this
      */
     public function calculateAdjustmentsTotal();
-
 }
