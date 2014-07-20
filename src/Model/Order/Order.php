@@ -281,7 +281,7 @@ class Order implements OrderInterface
     /**
      * {@inheritDoc}
      */
-    private function onAdjustmentsChange()
+    protected function onAdjustmentsChange()
     {
         $this->total = null;
     }

@@ -144,7 +144,7 @@ class OrderItem implements OrderItemInterface
     /**
      * {@inheritDoc}
      */
-    private function onAdjustmentsChange()
+    protected function onAdjustmentsChange()
     {
         $this->total = null;
     }

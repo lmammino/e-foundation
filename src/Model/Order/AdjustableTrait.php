@@ -153,7 +153,7 @@ trait AdjustableTrait
      * Function called every time the adjustment changes
      * it can be redefined to add some logic when using the trait
      */
-    private function onAdjustmentsChange()
+    protected function onAdjustmentsChange()
     {
         // does nothing by default
     }
