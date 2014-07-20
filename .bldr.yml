@@ -1,6 +1,14 @@
 bldr:
     name: LMammino/Efoundation
     profiles:
+        default:
+            description: default build task
+            tasks:
+                - lintPhp
+                - testPhpUnit
+                - cleanDoc
+                - buildDoc
+
         doc:
             description: Generates API doc
             tasks:
@@ -9,6 +17,7 @@ bldr:
         test:
             description: Run the test suite
             tasks:
+                - lintPhp
                 - testPhpUnit
 
     tasks:
@@ -31,5 +40,16 @@ bldr:
             calls:
                 -
                     type: exec
+                    failOnError: true
                     executable: vendor/bin/phpunit
                     arguments: ["-c", "phpunit.xml.dist"]
+        lintPhp:
+            description: Lints the files of the project
+            calls:
+                -
+                    type: apply
+                    failOnError: true
+                    src:
+                        - { path: [src, tests], files: *.php, recursive: true }
+                    executable: php
+                    arguments: [-l]
