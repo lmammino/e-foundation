@@ -28,3 +28,8 @@ bldr:
                     arguments: ["update", "doc/config.php"]
         testPhpUnit:
             description: PhpUnit tests
+            calls:
+                -
+                    type: exec
+                    executable: vendor/bin/phpunit
+                    arguments: ["-c", "phpunit.xml.dist"]
