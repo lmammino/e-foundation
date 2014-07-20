@@ -3,6 +3,7 @@
 namespace LMammino\EFoundation\Model\Order;
 
 use LMammino\EFoundation\Model\IdentifiableTrait;
+use LMammino\EFoundation\Model\Owner\OwnerAwareTrait;
 use LMammino\EFoundation\Model\SoftDeletableTrait;
 use LMammino\EFoundation\Model\TimestampableTrait;
 
@@ -17,6 +18,7 @@ use Doctrine\Common\Collections\Collection;
 class Order implements OrderInterface
 {
     use IdentifiableTrait;
+    use OwnerAwareTrait;
     use TimestampableTrait {
         TimestampableTrait::__construct as private __timestampableConstruct;
     }

@@ -3,6 +3,7 @@
 namespace LMammino\EFoundation\Model\Order;
 
 use LMammino\EFoundation\Model\IdentifiableInterface;
+use LMammino\EFoundation\Model\Owner\OwnerAwareInterface;
 use LMammino\EFoundation\Model\TimestampableInterface;
 use LMammino\EFoundation\Model\SoftDeletableInterface;
 
@@ -14,6 +15,7 @@ use Doctrine\Common\Collections\Collection;
  * @package LMammino\EFoundation\Model\Order
  */
 interface OrderInterface extends
+    OwnerAwareInterface,
     AdjustableInterface,
     IdentifiableInterface,
     TimestampableInterface,
