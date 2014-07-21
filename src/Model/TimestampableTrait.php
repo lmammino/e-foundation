@@ -74,4 +74,23 @@ trait TimestampableTrait
 
         return $this;
     }
+
+    /**
+     * Function to call by the orm manager before persisting the entity
+     */
+    public function onPrePersist()
+    {
+        $now = new \DateTime();
+        $this->setCreatedAt($now);
+        $this->setUpdatedAt($now);
+    }
+
+    /**
+     * Function to call by the orm manager before updating the entity
+     */
+    public function onPreUpdate()
+    {
+        $now = new \DateTime();
+        $this->setUpdatedAt($now);
+    }
 }
