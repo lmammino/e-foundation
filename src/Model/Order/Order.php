@@ -21,10 +21,14 @@ class Order implements OrderInterface
     use OwnerAwareTrait;
     use TimestampableTrait {
         TimestampableTrait::__construct as private __timestampableConstruct;
+        TimestampableTrait::onPrePersist as private __timestampableOnPrePersist;
+        TimestampableTrait::onPreUpdate as private __timestampableOnPreUpdate;
     }
     use SoftDeletableTrait;
     use AdjustableTrait {
         AdjustableTrait::__construct as private __adjustableConstruct;
+        TimestampableTrait::onPrePersist as private __adjustableOnPrePersist;
+        TimestampableTrait::onPreUpdate as private __adjustableOnPreUpdate;
     }
 
     /**
@@ -221,9 +225,7 @@ class Order implements OrderInterface
      */
     public function getItemsTotal()
     {
-        if (null === $this->itemsTotal) {
-            $this->calculateItemsTotal();
-        }
+        $this->recalculateItemsTotalIfNeeded();
 
         return $this->itemsTotal;
     }
@@ -249,9 +251,7 @@ class Order implements OrderInterface
      */
     public function getTotal()
     {
-        if (null === $this->total) {
-            $this->calculateTotal();
-        }
+        $this->recalculateTotalIfNeeded();
 
         return $this->total;
     }
@@ -281,10 +281,52 @@ class Order implements OrderInterface
     }
 
     /**
+     * On pre persist
+     */
+    public function onPrePersist()
+    {
+        $this->__timestampableOnPrePersist();
+        $this->__adjustableOnPrePersist();
+        $this->recalculateItemsTotalIfNeeded();
+        $this->recalculateTotalIfNeeded();
+    }
+
+    /**
+     * On pre update
+     */
+    public function onPreUpdate()
+    {
+        $this->__timestampableOnPreUpdate();
+        $this->__adjustableOnPreUpdate();
+        $this->recalculateItemsTotalIfNeeded();
+        $this->recalculateTotalIfNeeded();
+    }
+
+    /**
      * {@inheritDoc}
      */
     protected function onAdjustmentsChange()
     {
         $this->total = null;
+    }
+
+    /**
+     * Recalculates items total if needed
+     */
+    protected function recalculateItemsTotalIfNeeded()
+    {
+        if (null === $this->itemsTotal) {
+            $this->calculateItemsTotal();
+        }
+    }
+
+    /**
+     * Recalculates total if needed
+     */
+    protected function recalculateTotalIfNeeded()
+    {
+        if (null === $this->total) {
+            $this->calculateTotal();
+        }
     }
 }

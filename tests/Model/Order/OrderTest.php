@@ -353,4 +353,136 @@ class OrderTest extends \PHPUnit_Framework_TestCase
         $this->order->addAdjustment($adjustment);
         $this->assertEquals($expectedTotal3, $this->order->getTotal());
     }
+
+    /**
+     * @test
+     */
+    public function it_should_recalculate_items_total_on_pre_persist()
+    {
+        $price1 = 100;
+        $price2 = 200;
+        $expectedTotal1 = $price1;
+        $expectedTotal2 = $price1 + $price2;
+
+        $item1 = $this->getMock('\LMammino\EFoundation\Model\Order\OrderItemInterface');
+        $item1->expects($this->atLeast(2))
+              ->method('getTotal')
+              ->willReturn($price1);
+
+        $item2 = $this->getMock('\LMammino\EFoundation\Model\Order\OrderItemInterface');
+        $item2->expects($this->atLeast(1))
+              ->method('getTotal')
+              ->willReturn($price2);
+
+        $this->order->addItem($item1);
+        $this->assertEquals($expectedTotal1, $this->order->getTotal());
+
+        $this->order->addItem($item2);
+        $this->order->onPrePersist();
+
+        $this->assertEquals($expectedTotal2, $this->getObjectAttribute($this->order, 'itemsTotal'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_recalculate_items_total_on_pre_update()
+    {
+        $price1 = 100;
+        $price2 = 200;
+        $expectedTotal1 = $price1;
+        $expectedTotal2 = $price1 + $price2;
+
+        $item1 = $this->getMock('\LMammino\EFoundation\Model\Order\OrderItemInterface');
+        $item1->expects($this->atLeast(2))
+              ->method('getTotal')
+              ->willReturn($price1);
+
+        $item2 = $this->getMock('\LMammino\EFoundation\Model\Order\OrderItemInterface');
+        $item2->expects($this->atLeast(1))
+              ->method('getTotal')
+              ->willReturn($price2);
+
+        $this->order->addItem($item1);
+        $this->assertEquals($expectedTotal1, $this->order->getTotal());
+
+        $this->order->addItem($item2);
+        $this->order->onPreUpdate();
+
+        $this->assertEquals($expectedTotal2, $this->getObjectAttribute($this->order, 'itemsTotal'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_recalculate_total_on_pre_persist()
+    {
+        $price1 = 100;
+        $price2 = 200;
+        $adjustmentPrice = -50;
+        $expectedTotal1 = $price1;
+        $expectedTotal2 = $price1 + $price2 + $adjustmentPrice;
+
+        $item1 = $this->getMock('\LMammino\EFoundation\Model\Order\OrderItemInterface');
+        $item1->expects($this->atLeast(2))
+              ->method('getTotal')
+              ->willReturn($price1);
+
+        $item2 = $this->getMock('\LMammino\EFoundation\Model\Order\OrderItemInterface');
+        $item2->expects($this->atLeast(1))
+              ->method('getTotal')
+              ->willReturn($price2);
+
+        $adjustment = $this->getMock('\LMammino\EFoundation\Model\Order\AdjustmentInterface');
+        $adjustment->expects($this->atLeast(1))
+                   ->method('getAmount')
+                  ->willReturn($adjustmentPrice);
+
+        $this->order->addItem($item1);
+        $this->assertEquals($expectedTotal1, $this->order->getTotal());
+
+        $this->order->addItem($item2)
+                    ->addAdjustment($adjustment);
+
+        $this->order->onPrePersist();
+
+        $this->assertEquals($expectedTotal2, $this->getObjectAttribute($this->order, 'total'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_recalculate_total_on_pre_update()
+    {
+        $price1 = 100;
+        $price2 = 200;
+        $adjustmentPrice = -50;
+        $expectedTotal1 = $price1;
+        $expectedTotal2 = $price1 + $price2 + $adjustmentPrice;
+
+        $item1 = $this->getMock('\LMammino\EFoundation\Model\Order\OrderItemInterface');
+        $item1->expects($this->atLeast(2))
+            ->method('getTotal')
+            ->willReturn($price1);
+
+        $item2 = $this->getMock('\LMammino\EFoundation\Model\Order\OrderItemInterface');
+        $item2->expects($this->atLeast(1))
+            ->method('getTotal')
+            ->willReturn($price2);
+
+        $adjustment = $this->getMock('\LMammino\EFoundation\Model\Order\AdjustmentInterface');
+        $adjustment->expects($this->atLeast(1))
+            ->method('getAmount')
+            ->willReturn($adjustmentPrice);
+
+        $this->order->addItem($item1);
+        $this->assertEquals($expectedTotal1, $this->order->getTotal());
+
+        $this->order->addItem($item2)
+            ->addAdjustment($adjustment);
+
+        $this->order->onPreUpdate();
+
+        $this->assertEquals($expectedTotal2, $this->getObjectAttribute($this->order, 'total'));
+    }
 }

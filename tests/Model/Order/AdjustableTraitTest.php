@@ -164,4 +164,58 @@ class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
 
         $this->assertCount(1, $this->adjustableTrait->getAdjustments());
     }
+
+    /**
+     * @test
+     */
+    public function it_should_recalculate_adjustments_total_on_pre_persist()
+    {
+        $adjustment1 = $this->getMock('\LMammino\EFoundation\Model\Order\AdjustmentInterface');
+        $adjustment1->expects($this->exactly(2))
+            ->method('getAmount')
+            ->willReturn(17);
+
+        $adjustment2 = $this->getMock('\LMammino\EFoundation\Model\Order\AdjustmentInterface');
+        $adjustment2->expects($this->exactly(1))
+            ->method('getAmount')
+            ->willReturn(-13);
+
+        $expectedTotal1 = 17;
+        $expectedTotal2 = 4;
+
+        $this->adjustableTrait->addAdjustment($adjustment1);
+        $this->assertEquals($expectedTotal1, $this->adjustableTrait->getAdjustmentTotal());
+
+        $this->adjustableTrait->addAdjustment($adjustment2);
+        $this->adjustableTrait->onPrePersist();
+        $this->assertEquals($expectedTotal2, $this->getObjectAttribute($this->adjustableTrait, 'adjustmentsTotal'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_recalculate_adjustments_total_on_pre_update()
+    {
+        $adjustment1 = $this->getMock('\LMammino\EFoundation\Model\Order\AdjustmentInterface');
+        $adjustment1->expects($this->exactly(2))
+            ->method('getAmount')
+            ->willReturn(17);
+
+        $adjustment2 = $this->getMock('\LMammino\EFoundation\Model\Order\AdjustmentInterface');
+        $adjustment2->expects($this->exactly(1))
+            ->method('getAmount')
+            ->willReturn(-13);
+
+        $expectedTotal1 = 17;
+        $expectedTotal2 = 4;
+
+        $this->adjustableTrait->addAdjustment($adjustment1);
+        $this->assertEquals($expectedTotal1, $this->adjustableTrait->getAdjustmentTotal());
+
+        $this->adjustableTrait->addAdjustment($adjustment2);
+        $this->adjustableTrait->onPreUpdate();
+
+        $adjustmentsTotal = $this->getObjectAttribute($this->adjustableTrait, 'adjustmentsTotal');
+        $this->assertEquals($expectedTotal2, $adjustmentsTotal);
+    }
 }

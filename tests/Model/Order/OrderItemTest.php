@@ -168,4 +168,60 @@ class OrderItemTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedQuantity, $this->orderItem->getQuantity());
     }
 
+    /**
+     * @test
+     */
+    public function it_should_recalculate_total_on_pre_persist()
+    {
+        $quantity = 2.5;
+        $unitPrice = 10;
+        $discount = -10;
+        $expectedTotal1 = 25;
+        $expectedTotal2 = 15;
+
+        $adjustment = $this->getMock('\LMammino\EFoundation\Model\Order\AdjustmentInterface');
+        $adjustment->expects($this->once())
+                   ->method('getAmount')
+                   ->willReturn($discount);
+
+        $this->orderItem->setQuantity($quantity)
+                        ->setUnitPrice($unitPrice);
+
+        $this->assertEquals($expectedTotal1, $this->orderItem->getTotal());
+
+        $this->orderItem->addAdjustment($adjustment);
+
+        $this->orderItem->onPrePersist();
+
+        $this->assertEquals($expectedTotal2, $this->getObjectAttribute($this->orderItem, 'total'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_recalculate_total_on_pre_update()
+    {
+        $quantity = 2.5;
+        $unitPrice = 10;
+        $discount = -10;
+        $expectedTotal1 = 25;
+        $expectedTotal2 = 15;
+
+        $adjustment = $this->getMock('\LMammino\EFoundation\Model\Order\AdjustmentInterface');
+        $adjustment->expects($this->once())
+            ->method('getAmount')
+            ->willReturn($discount);
+
+        $this->orderItem->setQuantity($quantity)
+            ->setUnitPrice($unitPrice);
+
+        $this->assertEquals($expectedTotal1, $this->orderItem->getTotal());
+
+        $this->orderItem->addAdjustment($adjustment);
+
+        $this->orderItem->onPreUpdate();
+
+        $this->assertEquals($expectedTotal2, $this->getObjectAttribute($this->orderItem, 'total'));
+    }
+
 }

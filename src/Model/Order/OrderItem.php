@@ -15,10 +15,14 @@ class OrderItem implements OrderItemInterface
     use IdentifiableTrait;
     use TimestampableTrait {
         TimestampableTrait::__construct as private __timestampableConstruct;
+        TimestampableTrait::onPrePersist as private __timestampableOnPrePersist;
+        TimestampableTrait::onPreUpdate as private __timestampableOnPreUpdate;
     }
     use OrderAwareTrait;
     use AdjustableTrait {
         AdjustableTrait::__construct as private __adjustableConstruct;
+        TimestampableTrait::onPrePersist as private __adjustableOnPrePersist;
+        TimestampableTrait::onPreUpdate as private __adjustableOnPreUpdate;
     }
 
     /**
@@ -88,9 +92,7 @@ class OrderItem implements OrderItemInterface
      */
     public function getTotal()
     {
-        if (null === $this->total) {
-            $this->calculateTotal();
-        }
+        $this->recalculateTotalIfNeeded();
 
         return $this->total;
     }
@@ -139,6 +141,36 @@ class OrderItem implements OrderItemInterface
         }
 
         return $this;
+    }
+
+    /**
+     * On pre persist
+     */
+    public function onPrePersist()
+    {
+        $this->__timestampableOnPrePersist();
+        $this->__adjustableOnPrePersist();
+        $this->recalculateTotalIfNeeded();
+    }
+
+    /**
+     * On pre update
+     */
+    public function onPreUpdate()
+    {
+        $this->__timestampableOnPreUpdate();
+        $this->__adjustableOnPreUpdate();
+        $this->recalculateTotalIfNeeded();
+    }
+
+    /**
+     * Recalculates the total if needed
+     */
+    protected function recalculateTotalIfNeeded()
+    {
+        if (null === $this->total) {
+            $this->calculateTotal();
+        }
     }
 
     /**

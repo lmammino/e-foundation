@@ -124,9 +124,7 @@ trait AdjustableTrait
      */
     public function getAdjustmentTotal()
     {
-        if (null === $this->adjustmentsTotal) {
-            $this->calculateAdjustmentsTotal();
-        }
+        $this->recalculateAdjustmentsTotalIfNeeded();
 
         return $this->adjustmentsTotal;
     }
@@ -150,11 +148,37 @@ trait AdjustableTrait
     }
 
     /**
+     * On pre persist
+     */
+    public function onPrePersist()
+    {
+        $this->recalculateAdjustmentsTotalIfNeeded();
+    }
+
+    /**
+     * On pre update
+     */
+    public function onPreUpdate()
+    {
+        $this->recalculateAdjustmentsTotalIfNeeded();
+    }
+
+    /**
      * Function called every time the adjustment changes
      * it can be redefined to add some logic when using the trait
      */
     protected function onAdjustmentsChange()
     {
         // does nothing by default
+    }
+
+    /**
+     * Recalculates adjustments total if needed
+     */
+    protected function recalculateAdjustmentsTotalIfNeeded()
+    {
+        if (null === $this->adjustmentsTotal) {
+            $this->calculateAdjustmentsTotal();
+        }
     }
 }
