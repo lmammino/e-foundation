@@ -45,6 +45,16 @@ class OrderTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function it_should_handle_a_currency()
+    {
+        $currency = 'EUR';
+        $this->order->setCurrency($currency);
+        $this->assertEquals($currency, $this->order->getCurrency());
+    }
+
+    /**
+     * @test
+     */
     public function it_should_handle_a_completed_at()
     {
         $completedAt = new \DateTime('17 May 1987');

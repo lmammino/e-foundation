@@ -34,6 +34,22 @@ interface OrderInterface extends
     const STATE_RETURNED    = 'returned';
 
     /**
+     * Get the currency
+     *
+     * @return string
+     */
+    public function getCurrency();
+
+    /**
+     * Set the currency
+     *
+     * @param string $currency
+     *
+     * @return $this
+     */
+    public function setCurrency($currency);
+
+    /**
      * Check ig the order is completed
      *
      * @return boolean

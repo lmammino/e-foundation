@@ -37,6 +37,11 @@ class Order implements OrderInterface
     protected $state;
 
     /**
+     * @var string $currency
+     */
+    protected $currency;
+
+    /**
      * @var \DateTime $completedAt
      */
     protected $completedAt;
@@ -80,6 +85,30 @@ class Order implements OrderInterface
     public function setState($state)
     {
         $this->state = $state;
+
+        return $this;
+    }
+
+    /**
+     * Get currency
+     *
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * Set currency
+     *
+     * @param string $currency
+     *
+     * @return $this
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
 
         return $this;
     }
