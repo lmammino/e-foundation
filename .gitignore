@@ -2,3 +2,4 @@ vendor/
 .idea/
 doc/
 !doc/config.php
+composer.lock
