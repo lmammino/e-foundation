@@ -106,5 +106,5 @@ interface VariantInterface extends SoftDeletableInterface, TimestampableInterfac
      *
      * @return $this
      */
-    public function setDefaults(VariantInterface $masterVariant);
+    public function inheritDefaults(VariantInterface $masterVariant);
 }
