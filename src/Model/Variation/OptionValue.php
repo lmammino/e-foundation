@@ -15,11 +15,6 @@ class OptionValue implements OptionValueInterface
     protected $name;
 
     /**
-     * @var string $presentation
-     */
-    protected $presentation;
-
-    /**
      * @var OptionInterface $option
      */
     protected $option;
@@ -46,25 +41,6 @@ class OptionValue implements OptionValueInterface
 
         return $this;
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getPresentation()
-    {
-        return $this->presentation;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setPresentation($presentation)
-    {
-        $this->presentation = $presentation;
-
-        return $this;
-    }
-
 
     /**
      * {@inheritDoc}
@@ -98,5 +74,17 @@ class OptionValue implements OptionValueInterface
     public function setValue($value)
     {
         $this->value = $value;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOptionPresentation()
+    {
+        if (null === $this->option) {
+            throw new \BadMethodCallException('This value has not an associated option');
+        }
+
+        return $this->option->getPresentation();
     }
 }

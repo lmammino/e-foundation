@@ -58,18 +58,9 @@ interface OptionValueInterface
     public function setName($name);
 
     /**
-     * Get presentation
+     * Proxy method to get presentation name of the related option
      *
      * @return string
      */
-    public function getPresentation();
-
-    /**
-     * Set presentation
-     *
-     * @param string $presentation
-     *
-     * @return $this
-     */
-    public function setPresentation($presentation);
+    public function getOptionPresentation();
 }

@@ -45,16 +45,6 @@ class OptionValueTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_handle_a_presentation()
-    {
-        $presentation = 'size';
-        $this->optionValue->setPresentation($presentation);
-        $this->assertEquals($presentation, $this->optionValue->getPresentation());
-    }
-
-    /**
-     * @test
-     */
     public function it_should_handle_an_option()
     {
         $option = $this->getMock('\LMammino\EFoundation\Model\Variation\OptionInterface');
@@ -72,4 +62,28 @@ class OptionValueTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($value, $this->optionValue->getValue());
     }
 
+    /**
+     * @test
+     */
+    public function it_should_get_option_presentation()
+    {
+        $presentation = 'Size';
+        $option = $this->getMock('\LMammino\EFoundation\Model\Variation\OptionInterface');
+        $option->expects($this->once())
+               ->method('getPresentation')
+               ->willReturn($presentation);
+
+        $this->optionValue->setOption($option);
+        $this->assertEquals($presentation, $this->optionValue->getOptionPresentation());
+    }
+
+    /**
+     * @test
+     *
+     * @expectedException \BadMethodCallException
+     */
+    public function it_should_raise_an_exception_when_getting_option_presentation_without_an_option()
+    {
+        $this->optionValue->getOptionPresentation();
+    }
 }
