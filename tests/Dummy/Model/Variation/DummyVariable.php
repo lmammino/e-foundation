@@ -14,10 +14,10 @@ use LMammino\EFoundation\Model\Variation\VariableTrait;
 class DummyVariable implements VariableInterface
 {
     use VariableTrait {
-        __construct as private __variableConstruct;
+        VariableTrait::__construct as private __variableConstruct;
     }
     use TimestampableTrait {
-        __construct as private __timestampableConstruct;
+        TimestampableTrait::__construct as private __timestampableConstruct;
     }
 
     /**
