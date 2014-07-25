@@ -14,7 +14,7 @@ interface VariableInterface
     /**
      * Get the master variant
      *
-     * @return VariantInterface
+     * @return VariantInterface|null
      */
     public function getMasterVariant();
 
@@ -78,52 +78,52 @@ interface VariableInterface
     public function hasVariant(VariantInterface $variant);
 
     /**
-     * Checks if has any available option
+     * Checks if has any variability option
      *
      * @return boolean
      */
-    public function hasAvailableOptions();
+    public function hasVariabilityOptions();
 
     /**
-     * Gets all available options
+     * Gets all variability options
      *
      * @return Collection|OptionInterface[]
      */
-    public function getAvailableOptions();
+    public function getVariabilityOptions();
 
     /**
-     * Sets all available options
+     * Sets all variability options
      *
-     * @param Collection $availableOptions
+     * @param Collection $variabilityOptions
      *
      * @return $this
      */
-    public function setAvailableOptions(Collection $availableOptions);
+    public function setVariabilityOptions(Collection $variabilityOptions);
 
     /**
-     * Adds a given available option
+     * Adds a given variability option
      *
-     * @param OptionInterface $availableOption
+     * @param OptionInterface $variabilityOption
      *
      * @return $this
      */
-    public function addAvailableOption(OptionInterface $availableOption);
+    public function addVariabilityOption(OptionInterface $variabilityOption);
 
     /**
-     * Removes a given available option
+     * Removes a given variability option
      *
-     * @param OptionInterface $availableOption
+     * @param OptionInterface $variabilityOption
      *
      * @return $this
      */
-    public function removeAvailableOption(OptionInterface $availableOption);
+    public function removeVariabilityOption(OptionInterface $variabilityOption);
 
     /**
-     * Check if has a given available option
+     * Check if has a given variability option
      *
-     * @param OptionInterface $availableOption
+     * @param OptionInterface $variabilityOption
      *
      * @return boolean
      */
-    public function hasAvailableOption(OptionInterface $availableOption);
+    public function hasVariabilityOption(OptionInterface $variabilityOption);
 }
