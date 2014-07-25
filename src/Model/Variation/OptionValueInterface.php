@@ -19,11 +19,11 @@ interface OptionValueInterface
     /**
      * Set the related option
      *
-     * @param OptionInterface $option
+     * @param OptionInterface|null $option
      *
      * @return $this
      */
-    public function setOption(OptionInterface $option);
+    public function setOption(OptionInterface $option = null);
 
     /**
      * Get the value
@@ -46,16 +46,7 @@ interface OptionValueInterface
      *
      * @return string
      */
-    public function getName();
-
-    /**
-     * Set the name
-     *
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function setName($name);
+    public function getOptionName();
 
     /**
      * Proxy method to get presentation name of the related option

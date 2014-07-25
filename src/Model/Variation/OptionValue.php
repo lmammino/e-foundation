@@ -10,11 +10,6 @@ namespace LMammino\EFoundation\Model\Variation;
 class OptionValue implements OptionValueInterface
 {
     /**
-     * @var string $name
-     */
-    protected $name;
-
-    /**
      * @var OptionInterface $option
      */
     protected $option;
@@ -27,24 +22,6 @@ class OptionValue implements OptionValueInterface
     /**
      * {@inheritDoc}
      */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getOption()
     {
         return $this->option;
@@ -53,7 +30,7 @@ class OptionValue implements OptionValueInterface
     /**
      * {@inheritDoc}
      */
-    public function setOption(OptionInterface $option)
+    public function setOption(OptionInterface $option = null)
     {
         $this->option = $option;
 
@@ -74,6 +51,18 @@ class OptionValue implements OptionValueInterface
     public function setValue($value)
     {
         $this->value = $value;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOptionName()
+    {
+        if (null === $this->option) {
+            throw new \BadMethodCallException('This value has not an associated option');
+        }
+
+        return $this->option->getName();
     }
 
     /**

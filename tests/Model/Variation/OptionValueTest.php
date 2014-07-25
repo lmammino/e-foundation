@@ -35,16 +35,6 @@ class OptionValueTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_handle_a_name()
-    {
-        $name = 'size';
-        $this->optionValue->setName($name);
-        $this->assertEquals($name, $this->optionValue->getName());
-    }
-
-    /**
-     * @test
-     */
     public function it_should_handle_an_option()
     {
         $option = $this->getMock('\LMammino\EFoundation\Model\Variation\OptionInterface');
@@ -60,6 +50,31 @@ class OptionValueTest extends \PHPUnit_Framework_TestCase
         $value = 17;
         $this->optionValue->setValue($value);
         $this->assertEquals($value, $this->optionValue->getValue());
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_get_option_name()
+    {
+        $name = 'size';
+        $option = $this->getMock('\LMammino\EFoundation\Model\Variation\OptionInterface');
+        $option->expects($this->once())
+               ->method('getName')
+               ->willReturn($name);
+
+        $this->optionValue->setOption($option);
+        $this->assertEquals($name, $this->optionValue->getOptionName());
+    }
+
+    /**
+     * @test
+     *
+     * @expectedException \BadMethodCallException
+     */
+    public function it_should_raise_an_exception_when_getting_option_name_without_an_option()
+    {
+        $this->optionValue->getOptionName();
     }
 
     /**
