@@ -5,6 +5,7 @@ namespace LMammino\EFoundation\Model\Variation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
+use LMammino\EFoundation\Model\IdentifiableTrait;
 use LMammino\EFoundation\Model\SoftDeletableTrait;
 use LMammino\EFoundation\Model\TimestampableTrait;
 
@@ -15,6 +16,7 @@ use LMammino\EFoundation\Model\TimestampableTrait;
  */
 class Variant implements VariantInterface
 {
+    use IdentifiableTrait;
     use SoftDeletableTrait;
     use TimestampableTrait {
         TimestampableTrait::__construct as private __timestampableConstruct;

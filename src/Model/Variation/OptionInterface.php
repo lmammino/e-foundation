@@ -2,6 +2,7 @@
 
 namespace LMammino\EFoundation\Model\Variation;
 
+use LMammino\EFoundation\Model\IdentifiableInterface;
 use LMammino\EFoundation\Model\TimestampableInterface;
 
 use Doctrine\Common\Collections\Collection;
@@ -11,7 +12,7 @@ use Doctrine\Common\Collections\Collection;
  *
  * @package LMammino\EFoundation\Model\Variation
  */
-interface OptionInterface extends TimestampableInterface
+interface OptionInterface extends IdentifiableInterface, TimestampableInterface
 {
     /**
      * Get the name

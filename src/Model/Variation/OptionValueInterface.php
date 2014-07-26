@@ -2,12 +2,14 @@
 
 namespace LMammino\EFoundation\Model\Variation;
 
+use LMammino\EFoundation\Model\IdentifiableInterface;
+
 /**
  * Interface OptionValueInterface
  *
  * @package LMammino\EFoundation\Model\Variation
  */
-interface OptionValueInterface
+interface OptionValueInterface extends IdentifiableInterface
 {
     /**
      * Get the related option

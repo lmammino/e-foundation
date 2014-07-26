@@ -3,10 +3,12 @@
 namespace LMammino\EFoundation\Model\Variation;
 
 use Doctrine\Common\Collections\Collection;
+
+use LMammino\EFoundation\Model\IdentifiableInterface;
 use LMammino\EFoundation\Model\SoftDeletableInterface;
 use LMammino\EFoundation\Model\TimestampableInterface;
 
-interface VariantInterface extends SoftDeletableInterface, TimestampableInterface
+interface VariantInterface extends IdentifiableInterface, SoftDeletableInterface, TimestampableInterface
 {
     /**
      * Checks if it is the master variant for the related variable object

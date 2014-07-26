@@ -5,6 +5,7 @@ namespace LMammino\EFoundation\Model\Variation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
+use LMammino\EFoundation\Model\IdentifiableTrait;
 use LMammino\EFoundation\Model\TimestampableTrait;
 
 /**
@@ -17,6 +18,7 @@ class Option implements OptionInterface
     use TimestampableTrait {
         TimestampableTrait::__construct as private __timestampableConstruct;
     }
+    use IdentifiableTrait;
 
     /**
      * @var string $name

@@ -2,6 +2,8 @@
 
 namespace LMammino\EFoundation\Model\Variation;
 
+use LMammino\EFoundation\Model\IdentifiableTrait;
+
 /**
  * Class OptionValue
  *
@@ -9,6 +11,8 @@ namespace LMammino\EFoundation\Model\Variation;
  */
 class OptionValue implements OptionValueInterface
 {
+    use IdentifiableTrait;
+
     /**
      * @var OptionInterface $option
      */

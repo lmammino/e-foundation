@@ -2,6 +2,7 @@
 
 namespace LMammino\EFoundation\Tests\Dummy\Model\Variation;
 
+use LMammino\EFoundation\Model\IdentifiableTrait;
 use LMammino\EFoundation\Model\TimestampableTrait;
 use LMammino\EFoundation\Model\Variation\VariableInterface;
 use LMammino\EFoundation\Model\Variation\VariableTrait;
@@ -13,6 +14,7 @@ use LMammino\EFoundation\Model\Variation\VariableTrait;
  */
 class DummyVariable implements VariableInterface
 {
+    use IdentifiableTrait;
     use VariableTrait {
         VariableTrait::__construct as private __variableConstruct;
     }

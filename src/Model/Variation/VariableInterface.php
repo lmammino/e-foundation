@@ -4,12 +4,14 @@ namespace LMammino\EFoundation\Model\Variation;
 
 use Doctrine\Common\Collections\Collection;
 
+use LMammino\EFoundation\Model\IdentifiableInterface;
+
 /**
  * Interface VariableInterface
  *
  * @package LMammino\EFoundation\Model\Variation
  */
-interface VariableInterface
+interface VariableInterface extends IdentifiableInterface
 {
     /**
      * Get the master variant
