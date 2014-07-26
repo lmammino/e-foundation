@@ -2,12 +2,14 @@
 
 namespace LMammino\EFoundation\Model\Attribute;
 
+use LMammino\EFoundation\Model\IdentifiableInterface;
+
 /**
  * Interface AttributeValueInterface
  *
  * @package LMammino\EFoundation\Model\Attribute
  */
-interface AttributeValueInterface
+interface AttributeValueInterface extends IdentifiableInterface
 {
     /**
      * Get subject (the object who holds the attribute for which the value is set)

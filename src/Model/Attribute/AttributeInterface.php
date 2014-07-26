@@ -2,12 +2,14 @@
 
 namespace LMammino\EFoundation\Model\Attribute;
 
+use LMammino\EFoundation\Model\IdentifiableInterface;
+
 /**
  * Interface AttributeInterface
  *
  * @package LMammino\EFoundation\Model\Attribute
  */
-interface AttributeInterface
+interface AttributeInterface extends IdentifiableInterface
 {
     /**
      * Get the name
