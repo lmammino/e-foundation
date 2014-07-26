@@ -1,0 +1,75 @@
+<?php
+
+namespace LMammino\EFoundation\Model\Attribute;
+
+/**
+ * Interface AttributeInterface
+ *
+ * @package LMammino\EFoundation\Model\Attribute
+ */
+interface AttributeInterface
+{
+    /**
+     * Get the name
+     *
+     * @return string
+     */
+    public function getName();
+
+    /**
+     * Set the name
+     *
+     * @param string $name
+     *
+     * @return $this
+     */
+    public function setName($name);
+
+    /**
+     * Get the presentation (how the attribute name is displayed to the user)
+     *
+     * @return string
+     */
+    public function getPresentation();
+
+    /**
+     * Set the presentation
+     *
+     * @param string $presentation
+     *
+     * @return $this
+     */
+    public function setPresentation($presentation);
+
+    /**
+     * Get the type
+     *
+     * @return string
+     */
+    public function getType();
+
+    /**
+     * Set the type
+     *
+     * @param string $type
+     *
+     * @return $this
+     */
+    public function setType($type);
+
+    /**
+     * Get configuration
+     *
+     * @return array
+     */
+    public function getConfiguration();
+
+    /**
+     * Set configuration
+     *
+     * @param array $configuration
+     *
+     * @return $this
+     */
+    public function setConfiguration(array $configuration);
+}
