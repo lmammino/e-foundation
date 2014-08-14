@@ -80,6 +80,16 @@ class AttributeValue implements AttributeValueInterface
     /**
      * {@inheritDoc}
      */
+    public function getAttributeName()
+    {
+        $this->assertAttributeIsSet();
+
+        return $this->attribute->getName();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getAttributePresentation()
     {
         $this->assertAttributeIsSet();

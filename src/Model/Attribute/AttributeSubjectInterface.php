@@ -12,63 +12,63 @@ use Doctrine\Common\Collections\Collection;
 interface AttributeSubjectInterface
 {
     /**
-     * Get the attributes
+     * Get the attribute values
      *
-     * @return Collection|AttributeInterface[]
+     * @return Collection|AttributeValueInterface[]
      */
-    public function getAttributes();
+    public function getAttributeValues();
 
     /**
-     * Set the attributes
+     * Set the attribute values
      *
-     * @param Collection $attributes
+     * @param Collection $attributesValues
      *
      * @return $this
      */
-    public function setAttributes(Collection $attributes);
+    public function setAttributesValues(Collection $attributesValues);
 
     /**
-     * Add an attribute
+     * Add an attribute value
      *
-     * @param AttributeInterface $attribute
+     * @param AttributeValueInterface $attributeValue
      *
      * @return $this
      */
-    public function addAttribute(AttributeInterface $attribute);
+    public function addAttributeValue(AttributeValueInterface $attributeValue);
 
     /**
-     * Remove an attribute
+     * Remove an attribute value
      *
-     * @param AttributeInterface $attribute
+     * @param AttributeValueInterface $attributeValue
      *
      * @return $this
      */
-    public function removeAttribute(AttributeInterface $attribute);
+    public function removeAttributeValue(AttributeValueInterface $attributeValue);
 
     /**
-     * Check if has a given attribute
+     * Check if has a given attribute value
      *
-     * @param AttributeInterface $attribute
+     * @param AttributeValueInterface $attributeValue
      *
      * @return boolean
      */
-    public function hasAttribute(AttributeInterface $attribute);
+    public function hasAttributeValue(AttributeValueInterface $attributeValue);
 
     /**
-     * Check if has an attribute that matches a given name
+     * Check if has an attribute value that matches a given name
      *
-     * @param string $attributeName
+     * @param string $attributeValueName
      *
      * @return boolean
      */
-    public function hasAttributeByName($attributeName);
+    public function hasAttributeValueByName($attributeValueName);
 
     /**
-     * Gets an attribute if matches a given name or null instead
+     * Gets an attribute value if matches a given name or null instead
      *
-     * @param string $attributeName
+     * @param string $attributeValueName
      *
-     * @return AttributeInterface|null
+     * @return AttributeValueInterface|null
      */
-    public function getAttributeByName($attributeName);
+    public function getAttributeValueByName($attributeValueName);
 }

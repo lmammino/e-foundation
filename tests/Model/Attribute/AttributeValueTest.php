@@ -60,6 +60,27 @@ class AttributeValueTest extends \PHPUnit_Framework_TestCase {
     /**
      * @test
      */
+    public function it_should_get_attribute_name()
+    {
+        $attribute = $this->getMock('\LMammino\EFoundation\Model\Attribute\AttributeInterface');
+        $attribute->expects($this->once())
+            ->method('getName');
+        $this->attributeValue->setAttribute($attribute);
+        $this->attributeValue->getAttributeName();
+    }
+
+    /**
+     * @test
+     * @expectedException \BadMethodCallException
+     */
+    public function it_should_fail_to_retrieve_attribute_name_when_no_attribute_is_set()
+    {
+        $this->attributeValue->getAttributeName();
+    }
+
+    /**
+     * @test
+     */
     public function it_should_get_attribute_presentation()
     {
         $attribute = $this->getMock('\LMammino\EFoundation\Model\Attribute\AttributeInterface');

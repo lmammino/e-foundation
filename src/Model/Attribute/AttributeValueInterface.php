@@ -60,6 +60,13 @@ interface AttributeValueInterface extends IdentifiableInterface
     public function setValue($value);
 
     /**
+     * Proxy method to get the attribute name
+     *
+     * @return string
+     */
+    public function getAttributeName();
+
+    /**
      * Proxy method to get the attribute presentation
      *
      * @return string
