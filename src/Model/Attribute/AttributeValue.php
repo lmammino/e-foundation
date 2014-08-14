@@ -108,9 +108,11 @@ class AttributeValue implements AttributeValueInterface
     }
 
     /**
-     * {@inheritDoc}
+     * Checks if the attribute is set and throws an exception whether it's not
+     *
+     * @throws \BadMethodCallException
      */
-    public function assertAttributeIsSet()
+    private function assertAttributeIsSet()
     {
         if (null === $this->attribute) {
             throw new \BadMethodCallException('This instance has no attribute set so you can\'t access its values');

@@ -62,9 +62,7 @@ class OptionValue implements OptionValueInterface
      */
     public function getOptionName()
     {
-        if (null === $this->option) {
-            throw new \BadMethodCallException('This value has not an associated option');
-        }
+        $this->assertOptionIsSet();
 
         return $this->option->getName();
     }
@@ -74,10 +72,20 @@ class OptionValue implements OptionValueInterface
      */
     public function getOptionPresentation()
     {
+        $this->assertOptionIsSet();
+
+        return $this->option->getPresentation();
+    }
+
+    /**
+     * Checks if the option is set and throws an exception whether it's not
+     *
+     * @throws \BadMethodCallException
+     */
+    private function assertOptionIsSet()
+    {
         if (null === $this->option) {
             throw new \BadMethodCallException('This value has not an associated option');
         }
-
-        return $this->option->getPresentation();
     }
 }
