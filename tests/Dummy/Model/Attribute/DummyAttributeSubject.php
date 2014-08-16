@@ -2,8 +2,8 @@
 
 namespace LMammino\EFoundation\Tests\Dummy\Model\Attribute;
 
-use LMammino\EFoundation\Model\Attribute\AttributeSubjectInterface;
-use LMammino\EFoundation\Model\Attribute\AttributeSubjectTrait;
+use LMammino\EFoundation\Attribute\Model\AttributeSubjectInterface;
+use LMammino\EFoundation\Attribute\Model\AttributeSubjectTrait;
 
 /**
  * Class DummyAttributeSubject

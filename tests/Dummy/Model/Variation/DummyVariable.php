@@ -2,10 +2,10 @@
 
 namespace LMammino\EFoundation\Tests\Dummy\Model\Variation;
 
-use LMammino\EFoundation\Model\IdentifiableTrait;
-use LMammino\EFoundation\Model\TimestampableTrait;
-use LMammino\EFoundation\Model\Variation\VariableInterface;
-use LMammino\EFoundation\Model\Variation\VariableTrait;
+use LMammino\EFoundation\Common\Model\IdentifiableTrait;
+use LMammino\EFoundation\Common\Model\TimestampableTrait;
+use LMammino\EFoundation\Variation\Model\VariableInterface;
+use LMammino\EFoundation\Variation\Model\VariableTrait;
 
 /**
  * Class DummyVariable
