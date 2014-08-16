@@ -2,6 +2,7 @@
 
 namespace LMammino\EFoundation\Variation\Model;
 
+use LMammino\EFoundation\Common\Exception\BadMethodCallException;
 use LMammino\EFoundation\Common\Model\IdentifiableTrait;
 
 /**
@@ -85,7 +86,7 @@ class OptionValue implements OptionValueInterface
     private function assertOptionIsSet()
     {
         if (null === $this->option) {
-            throw new \BadMethodCallException('This value has not an associated option');
+            throw new BadMethodCallException('This value has not an associated option');
         }
     }
 }

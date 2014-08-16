@@ -71,7 +71,7 @@ class AttributeValueTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @test
-     * @expectedException \BadMethodCallException
+     * @expectedException \LMammino\EFoundation\Common\Exception\BadMethodCallException
      */
     public function it_should_fail_to_retrieve_attribute_name_when_no_attribute_is_set()
     {
@@ -92,7 +92,7 @@ class AttributeValueTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @test
-     * @expectedException \BadMethodCallException
+     * @expectedException \LMammino\EFoundation\Common\Exception\BadMethodCallException
      */
     public function it_should_fail_to_retrieve_attribute_presentation_when_no_attribute_is_set()
     {
@@ -113,7 +113,7 @@ class AttributeValueTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @test
-     * @expectedException \BadMethodCallException
+     * @expectedException \LMammino\EFoundation\Common\Exception\BadMethodCallException
      */
     public function it_should_fail_to_retrieve_attribute_type_when_no_attribute_is_set()
     {
@@ -134,7 +134,7 @@ class AttributeValueTest extends \PHPUnit_Framework_TestCase {
 
     /**
      * @test
-     * @expectedException \BadMethodCallException
+     * @expectedException \LMammino\EFoundation\Common\Exception\BadMethodCallException
      */
     public function it_should_fail_to_retrieve_attribute_configuration_when_no_attribute_is_set()
     {

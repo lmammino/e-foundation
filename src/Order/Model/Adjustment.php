@@ -2,6 +2,7 @@
 
 namespace LMammino\EFoundation\Order\Model;
 
+use LMammino\EFoundation\Common\Exception\BadMethodCallException;
 use LMammino\EFoundation\Common\Model\IdentifiableTrait;
 use LMammino\EFoundation\Common\Model\TimestampableTrait;
 
@@ -168,7 +169,7 @@ class Adjustment implements AdjustmentInterface
     private function assertAmountIsSet()
     {
         if (null === $this->amount) {
-            throw new \BadMethodCallException('No amount set');
+            throw new BadMethodCallException('No amount set');
         }
     }
 }

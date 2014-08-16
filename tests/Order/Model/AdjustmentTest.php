@@ -141,7 +141,7 @@ class AdjustmentTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \BadMethodCallException
+     * @expectedException \LMammino\EFoundation\Common\Exception\BadMethodCallException
      */
     public function it_should_throw_exception_if_no_amount_has_been_given_and_is_credit_is_called()
     {
@@ -150,7 +150,7 @@ class AdjustmentTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \BadMethodCallException
+     * @expectedException \LMammino\EFoundation\Common\Exception\BadMethodCallException
      */
     public function it_should_throw_exception_if_no_amount_has_been_given_and_is_charge_is_called()
     {
