@@ -13,7 +13,7 @@ use Doctrine\Common\Collections\Collection;
 trait AttributeSubjectTrait
 {
     /**
-     * @var ArrayCollection $attributes
+     * @var Collection $attributes
      */
     protected $attributeValues;
 
