@@ -88,7 +88,11 @@ class Country implements CountryInterface
      */
     public function setProvinces(Collection $provinces)
     {
-        $this->provinces = $provinces;
+        foreach ($provinces as $province) {
+            $this->addProvince($province);
+        }
+
+        return $this;
     }
 
     /**
@@ -96,7 +100,10 @@ class Country implements CountryInterface
      */
     public function addProvince(ProvinceInterface $province)
     {
-        $this->provinces->add($province);
+        if (!$this->hasProvince($province)) {
+            $province->setCountry($this);
+            $this->provinces->add($province);
+        }
 
         return $this;
     }
@@ -114,7 +121,10 @@ class Country implements CountryInterface
      */
     public function removeProvince(ProvinceInterface $province)
     {
-        $this->provinces->removeElement($province);
+        if ($this->hasProvince($province)) {
+            $province->setCountry(null);
+            $this->provinces->removeElement($province);
+        }
 
         return $this;
     }

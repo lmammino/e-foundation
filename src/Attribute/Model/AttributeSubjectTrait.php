@@ -44,7 +44,9 @@ trait AttributeSubjectTrait
      */
     public function setAttributesValues(Collection $attributesValues)
     {
-        $this->attributeValues = $attributesValues;
+        foreach ($attributesValues as $attributeValue) {
+            $this->addAttributeValue($attributeValue);
+        }
 
         return $this;
     }

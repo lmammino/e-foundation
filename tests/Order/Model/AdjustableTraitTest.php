@@ -1,6 +1,7 @@
 <?php
 
 namespace LMammino\EFoundation\tests\Order\Model;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class AdjustableTraitTest
@@ -28,9 +29,13 @@ class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_handle_adjustments()
     {
-        $adjustments = $this->getMock('\Doctrine\Common\Collections\Collection');
+        $adjustment = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment->expects($this->once())
+                   ->method('setAdjustable')
+                   ->with($this->adjustableTrait);
+        $adjustments = new ArrayCollection(array($adjustment));
         $this->adjustableTrait->setAdjustments($adjustments);
-        $this->assertSame($adjustments, $this->adjustableTrait->getAdjustments());
+        $this->assertContains($adjustment, $this->adjustableTrait->getAdjustments());
     }
 
     /**

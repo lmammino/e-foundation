@@ -2,6 +2,7 @@
 
 namespace LMammino\EFoundation\Tests\Attribute\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use LMammino\EFoundation\Tests\Dummy\Model\Attribute\DummyAttributeSubject;
 
 /**
@@ -40,9 +41,15 @@ class AttributeSubjectTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_handle_attribute_values()
     {
-        $attributeValues = $this->getMock('\Doctrine\Common\Collections\Collection');
+        $attributeValue = $this->getMock('\LMammino\EFoundation\Attribute\Model\AttributeValueInterface');
+        $attributeValue->expects($this->once())
+                       ->method('setSubject')
+                       ->with($this->attributeSubject);
+        $attributeValues = new ArrayCollection(array($attributeValue));
+
         $this->attributeSubject->setAttributesValues($attributeValues);
-        $this->assertSame($attributeValues, $this->attributeSubject->getAttributeValues());
+
+        $this->assertContains($attributeValue, $this->attributeSubject->getAttributeValues());
     }
 
     /**

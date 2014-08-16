@@ -165,7 +165,9 @@ class Order implements OrderInterface
         $this->itemsTotal = null;
         $this->total = null;
 
-        $this->items = $items;
+        foreach ($items as $item) {
+            $this->addItem($item);
+        }
 
         return $this;
     }

@@ -2,6 +2,7 @@
 
 namespace LMammino\EFoundation\tests\Order\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use LMammino\EFoundation\Order\Model\Order;
 
 /**
@@ -97,9 +98,14 @@ class OrderTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_handle_items()
     {
-        $items = $this->getMock('\Doctrine\Common\Collections\Collection');
+        $item = $this->getMock('\LMammino\EFoundation\Order\Model\OrderItemInterface');
+        $item->expects($this->once())
+             ->method('setOrder')
+             ->with($this->order);
+
+        $items = new ArrayCollection(array($item));
         $this->order->setItems($items);
-        $this->assertSame($items, $this->order->getItems());
+        $this->assertContains($item, $this->order->getItems());
     }
 
     /**

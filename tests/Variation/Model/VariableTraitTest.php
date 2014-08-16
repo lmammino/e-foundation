@@ -2,6 +2,7 @@
 
 namespace LMammino\EFoundation\Tests\Variation\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use LMammino\EFoundation\Tests\Dummy\Model\Variation\DummyVariable;
 
 /**
@@ -29,9 +30,13 @@ class VariableTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_handle_variants()
     {
-        $variants = $this->getMock('\Doctrine\Common\Collections\Collection');
+        $variant = $this->getMock('\LMammino\EFoundation\Variation\Model\VariantInterface');
+        $variant->expects($this->once())
+                ->method('setObject')
+                ->with($this->variable);
+        $variants = new ArrayCollection(array($variant));
         $this->variable->setVariants($variants);
-        $this->assertSame($variants, $this->variable->getVariants());
+        $this->assertContains($variant, $this->variable->getVariants());
     }
 
     /**
@@ -175,9 +180,10 @@ class VariableTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_if_have_variability_options()
     {
-        $variabilityOptions = $this->getMock('\Doctrine\Common\Collections\Collection');
+        $variabilityOption = $this->getMock('\LMammino\EFoundation\Variation\Model\OptionInterface');
+        $variabilityOptions = new ArrayCollection(array($variabilityOption));
         $this->variable->setVariabilityOptions($variabilityOptions);
-        $this->assertSame($variabilityOptions, $this->variable->getVariabilityOptions());
+        $this->assertContains($variabilityOption, $this->variable->getVariabilityOptions());
     }
 
     /**

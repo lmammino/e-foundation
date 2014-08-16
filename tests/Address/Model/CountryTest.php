@@ -2,6 +2,7 @@
 
 namespace LMammino\EFoundation\Tests\Address\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use LMammino\EFoundation\Address\Model\Country;
 
 /**
@@ -57,9 +58,16 @@ class CountryTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_handle_provinces()
     {
-        $provinces = $this->getMock('\Doctrine\Common\Collections\Collection');
+        $province = $this->getMock('\LMammino\EFoundation\Address\Model\ProvinceInterface');
+        $province->expects($this->once())
+                 ->method('setCountry')
+                 ->with($this->country);
+
+        $provinces = new ArrayCollection(array($province));
+
         $this->country->setProvinces($provinces);
-        $this->assertEquals($provinces, $this->country->getProvinces());
+
+        $this->assertContains($province, $this->country->getProvinces());
     }
 
     /**
