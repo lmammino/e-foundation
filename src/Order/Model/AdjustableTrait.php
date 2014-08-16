@@ -51,7 +51,9 @@ trait AdjustableTrait
     {
         $this->adjustmentsTotal = null;
         $this->onAdjustmentsChange();
-        $this->adjustments = $adjustments;
+        foreach ($adjustments as $adjustment) {
+            $this->addAdjustment($adjustment);
+        }
 
         return $this;
     }

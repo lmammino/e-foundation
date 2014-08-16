@@ -93,7 +93,9 @@ class Option implements OptionInterface
      */
     public function setValues(Collection $values)
     {
-        $this->values = $values;
+        foreach ($values as $value) {
+            $this->addValue($value);
+        }
 
         return $this;
     }

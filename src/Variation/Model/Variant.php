@@ -120,7 +120,9 @@ class Variant implements VariantInterface
      */
     public function setOptionValues(Collection $optionValues)
     {
-        $this->optionValues = $optionValues;
+        foreach ($optionValues as $optionValue) {
+            $this->addOptionValue($optionValue);
+        }
 
         return $this;
     }

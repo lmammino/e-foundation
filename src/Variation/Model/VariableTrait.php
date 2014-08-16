@@ -50,7 +50,9 @@ trait VariableTrait
      */
     public function setVariants(Collection $variants)
     {
-        $this->variants = $variants;
+        foreach ($variants as $variant) {
+            $this->addVariant($variant);
+        }
 
         return $this;
     }
@@ -183,7 +185,9 @@ trait VariableTrait
      */
     public function setVariabilityOptions(Collection $variabilityOptions)
     {
-        $this->variabilityOptions = $variabilityOptions;
+        foreach ($variabilityOptions as $variabilityOption) {
+            $this->addVariabilityOption($variabilityOption);
+        }
 
         return $this;
     }

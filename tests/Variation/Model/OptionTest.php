@@ -1,6 +1,7 @@
 <?php
 
 namespace LMammino\EFoundation\Tests\Variation\Model;
+use Doctrine\Common\Collections\ArrayCollection;
 use LMammino\EFoundation\Variation\Model\Option;
 
 /**
@@ -56,9 +57,13 @@ class OptionTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_handle_values()
     {
-        $values = $this->getMock('\Doctrine\Common\Collections\Collection');
+        $value = $this->getMock('\LMammino\EFoundation\Variation\Model\OptionValueInterface');
+        $value->expects($this->once())
+              ->method('setOption')
+              ->with($this->option);
+        $values = new ArrayCollection(array($value));
         $this->option->setValues($values);
-        $this->assertSame($values, $this->option->getValues());
+        $this->assertContains($value, $this->option->getValues());
     }
 
     /**
