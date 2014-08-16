@@ -88,6 +88,21 @@ class OrderItemTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function it_should_convert_negative_total_to_zero()
+    {
+        $quantity = 2.5;
+        $unitPrice = -10;
+        $expectedTotal = 0;
+
+        $this->orderItem->setQuantity($quantity)
+            ->setUnitPrice($unitPrice);
+
+        $this->assertEquals($expectedTotal, $this->orderItem->getTotal());
+    }
+
+    /**
+     * @test
+     */
     public function it_should_calculate_total_including_adjustments()
     {
         $quantity = 2.5;

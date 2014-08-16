@@ -159,4 +159,31 @@ ADDR;
         $this->assertEquals($expected, (string) $this->address);
     }
 
+    /**
+     * @test
+     */
+    public function it_should_properly_format_address_with_missing_pieces_as_string()
+    {
+        $expected = <<<ADDR
+Tim Cook
+123456789
+Infinite Loop, 1
+95014 Cupertino (CA)
+ADDR;
+
+        $province = $this->getMock('\LMammino\EFoundation\Address\Model\ProvinceInterface');
+        $province->expects($this->once())
+            ->method('getISOName')
+            ->will($this->returnValue('CA'));
+
+        $this->address->setFirstName('Tim')
+            ->setLastName('Cook')
+            ->setCompanyIdentifier('123456789')
+            ->setStreet('Infinite Loop, 1')
+            ->setPostCode('95014')
+            ->setCity('Cupertino')
+            ->setProvince($province);
+
+        $this->assertEquals($expected, (string) $this->address);
+    }
 }
