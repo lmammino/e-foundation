@@ -64,6 +64,7 @@ class Cart extends Order implements CartInterface
         }
 
         $now = new \DateTime();
+
         return $this->expiresAt < $now;
     }
 }

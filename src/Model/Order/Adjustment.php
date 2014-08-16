@@ -145,9 +145,7 @@ class Adjustment implements AdjustmentInterface
      */
     public function isCharge()
     {
-        if (null === $this->amount) {
-            throw new \BadMethodCallException('No amount set');
-        }
+        $this->assertAmountIsSet();
 
         return $this->amount > 0;
     }
@@ -157,10 +155,20 @@ class Adjustment implements AdjustmentInterface
      */
     public function isCredit()
     {
+        $this->assertAmountIsSet();
+
+        return $this->amount < 0;
+    }
+
+    /**
+     * Checks if the amount is set and throws an exception whether it's not
+     *
+     * @throws \BadMethodCallException
+     */
+    private function assertAmountIsSet()
+    {
         if (null === $this->amount) {
             throw new \BadMethodCallException('No amount set');
         }
-
-        return $this->amount < 0;
     }
 }
