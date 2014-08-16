@@ -70,7 +70,7 @@ class OptionValueTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      *
-     * @expectedException \BadMethodCallException
+     * @expectedException \LMammino\EFoundation\Common\Exception\BadMethodCallException
      */
     public function it_should_raise_an_exception_when_getting_option_name_without_an_option()
     {
@@ -95,7 +95,7 @@ class OptionValueTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      *
-     * @expectedException \BadMethodCallException
+     * @expectedException \LMammino\EFoundation\Common\Exception\BadMethodCallException
      */
     public function it_should_raise_an_exception_when_getting_option_presentation_without_an_option()
     {

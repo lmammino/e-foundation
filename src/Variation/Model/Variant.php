@@ -5,6 +5,8 @@ namespace LMammino\EFoundation\Variation\Model;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
+use LMammino\EFoundation\Common\Exception\InvalidArgumentException;
+use LMammino\EFoundation\Common\Exception\LogicException;
 use LMammino\EFoundation\Common\Model\IdentifiableTrait;
 use LMammino\EFoundation\Common\Model\SoftDeletableTrait;
 use LMammino\EFoundation\Common\Model\TimestampableTrait;
@@ -161,11 +163,11 @@ class Variant implements VariantInterface
     public function inheritDefaults(VariantInterface $masterVariant)
     {
         if (!$masterVariant->isMaster()) {
-            throw new \InvalidArgumentException('Cannot inherit values from non master variant.');
+            throw new InvalidArgumentException('Cannot inherit values from non master variant.');
         }
 
         if ($this->isMaster()) {
-            throw new \LogicException('Master variant cannot inherit from another master variant.');
+            throw new LogicException('Master variant cannot inherit from another master variant.');
         }
 
         return $this;

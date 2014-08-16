@@ -128,7 +128,7 @@ class VariantTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \InvalidArgumentException
+     * @expectedException \LMammino\EFoundation\Common\Exception\InvalidArgumentException
      */
     public function it_cant_inherit_defaults_from_a_not_master_variant()
     {
@@ -143,7 +143,7 @@ class VariantTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @test
-     * @expectedException \LogicException
+     * @expectedException \LMammino\EFoundation\Common\Exception\LogicException
      */
     public function it_cant_inherit_defaults_if_is_a_master_variant()
     {

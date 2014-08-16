@@ -2,6 +2,7 @@
 
 namespace LMammino\EFoundation\Attribute\Model;
 
+use LMammino\EFoundation\Common\Exception\BadMethodCallException;
 use LMammino\EFoundation\Common\Model\IdentifiableTrait;
 
 class AttributeValue implements AttributeValueInterface
@@ -125,7 +126,7 @@ class AttributeValue implements AttributeValueInterface
     private function assertAttributeIsSet()
     {
         if (null === $this->attribute) {
-            throw new \BadMethodCallException('This instance has no attribute set so you can\'t access its values');
+            throw new BadMethodCallException('This instance has no attribute set so you can\'t access its values');
         }
     }
 }
