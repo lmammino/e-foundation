@@ -107,5 +107,6 @@ class AttributeSubjectTraitTest extends \PHPUnit_Framework_TestCase
         $this->attributeSubject->addAttributeValue($attributeValue);
 
         $this->assertSame($attributeValue, $this->attributeSubject->getAttributeValueByName('foo'));
+        $this->assertNull($this->attributeSubject->getAttributeValueByName('bar'));
     }
 }

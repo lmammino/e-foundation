@@ -329,6 +329,31 @@ class OrderTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function it_should_convert_negative_total_to_zero()
+    {
+        $price = 100;
+        $adjustmentPrice = -150;
+        $expectedTotal = 0;
+
+        $item = $this->getMock('\LMammino\EFoundation\Order\Model\OrderItemInterface');
+        $item->expects($this->once())
+            ->method('getTotal')
+            ->willReturn($price);
+
+        $adjustment = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment->expects($this->once())
+            ->method('getAmount')
+            ->willReturn($adjustmentPrice);
+
+        $this->order->addItem($item)
+                    ->addAdjustment($adjustment);
+
+        $this->assertEquals($expectedTotal, $this->order->getTotal());
+    }
+
+    /**
+     * @test
+     */
     public function it_should_recalculate_total_when_needed()
     {
         $price1 = 100;

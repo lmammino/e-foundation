@@ -45,6 +45,16 @@ class AttributeTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function it_should_handle_a_type()
+    {
+        $type = 'boolean';
+        $this->attribute->setType($type);
+        $this->assertEquals($type, $this->attribute->getType());
+    }
+
+    /**
+     * @test
+     */
     public function it_should_handle_a_presentation()
     {
         $presentation = 'Material';
