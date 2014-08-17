@@ -5,7 +5,7 @@
                           http://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
 
     <entity name="LMammino\EFoundation\Address\Model\Address" table="address">
-        <id name="id" type="integer" column="user_id">
+        <id name="id" type="integer">
             <generator strategy="AUTO" />
         </id>
 
@@ -17,7 +17,7 @@
         <field name="street" type="string" length="255" nullable="true"/>
         <field name="city" type="string" length="255" nullable="true"/>
 
-        <many-to-one field="country" target-entity="LMammino\EFoundation\Address\Model\CountryInterface" />
-        <many-to-one field="province" target-entity="LMammino\EFoundation\Address\Model\ProvinceInterface" />
+        <many-to-one field="country" target-entity="LMammino\EFoundation\Address\Model\CountryInterface"/>
+        <many-to-one field="province" target-entity="LMammino\EFoundation\Address\Model\ProvinceInterface"/>
     </entity>
 </doctrine-mapping>
