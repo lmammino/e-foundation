@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          http://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+
+    <entity name="LMammino\EFoundation\Address\Model\ZoneMember" table="zone_member" inheritance-type="SINGLE_TABLE">
+        <discriminator-column name="type" type="string" field-name="type" length="8" />
+        <discriminator-map>
+            <discriminator-mapping value="country" class="LMammino\EFoundation\Address\Model\ZoneMemberCountry" />
+            <discriminator-mapping value="province" class="LMammino\EFoundation\Address\Model\ZoneMemberProvince" />
+            <discriminator-mapping value="zone" class="LMammino\EFoundation\Address\Model\ZoneMemberZone" />
+        </discriminator-map>
+
+        <id name="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="name" type="string" length="255" nullable="true"/>
+
+        <many-to-one field="parentZone" target-entity="LMammino\EFoundation\Address\Model\ZoneInterface" inversed-by="members">
+            <join-column name="parent_zone_id" referenced-column-name="id" />
+        </many-to-one>
+    </entity>
+
+</doctrine-mapping>

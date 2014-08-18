@@ -9,11 +9,12 @@
             <generator strategy="AUTO" />
         </id>
 
-        <field name="name" type="string" length="255" nullable="true"/>
+        <field name="name" type="string" length="255"/>
         <field name="isoName" type="string" length="3" nullable="true"/>
 
         <many-to-one field="country"
                      target-entity="LMammino\EFoundation\Address\Model\CountryInterface"
                      inversed-by="provinces"/>
     </entity>
+
 </doctrine-mapping>
