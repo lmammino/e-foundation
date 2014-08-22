@@ -4,19 +4,15 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           http://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
 
-    <entity name="LMammino\EFoundation\Address\Model\Zone" table="ef_zone">
+    <mapped-superclass name="LMammino\EFoundation\Attribute\Model\Attribute" table="attribute">
         <id name="id" type="integer">
             <generator strategy="AUTO" />
         </id>
 
-        <field name="name" type="string" length="255" nullable="true"/>
-        <field name="type" type="string" length="16" nullable="true"/>
-
-        <one-to-many field="members" target-entity="LMammino\EFoundation\Address\Model\ZoneMemberInterface" mapped-by="parentZone">
-            <cascade>
-                <cascade-all/>
-            </cascade>
-        </one-to-many>
-    </entity>
+        <field name="name" column="name" type="string" />
+        <field name="presentation" column="presentation" type="string" />
+        <field name="type" column="type" type="string" />
+        <field name="configuration" column="configuration" type="array" />
+    </mapped-superclass>
 
 </doctrine-mapping>

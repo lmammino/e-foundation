@@ -128,6 +128,7 @@ class Product implements ProductInterface
     public function isAvailable()
     {
         $now = new \DateTime();
+
         return $now >= $this->availableOn;
     }
 
