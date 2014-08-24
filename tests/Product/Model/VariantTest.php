@@ -43,4 +43,15 @@ class VariantTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($product, $this->variant->getProduct());
         $this->assertSame($this->variant->getProduct(), $this->variant->getObject());
     }
+
+    /**
+     * @test
+     */
+    public function it_should_handle_an_available_on()
+    {
+        $availableOn = $this->getMock('\DateTime');
+
+        $this->variant->setAvailableOn($availableOn);
+        $this->assertSame($availableOn, $this->variant->getAvailableOn());
+    }
 }

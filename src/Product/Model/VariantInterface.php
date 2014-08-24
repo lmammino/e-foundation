@@ -25,4 +25,19 @@ interface VariantInterface extends BaseVariantInterface
      * @return $this
      */
     public function setProduct(ProductInterface $product = null);
+
+    /**
+     * Get available on
+     *
+     * @return \DateTime
+     */
+    public function getAvailableOn();
+
+    /**
+     * Set available on
+     *
+     * @param \DateTime $availableOn
+     * @return $this
+     */
+    public function setAvailableOn(\DateTime $availableOn = null);
 }

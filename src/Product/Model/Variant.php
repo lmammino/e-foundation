@@ -18,6 +18,11 @@ class Variant extends BaseVariant implements VariantInterface
     protected $product;
 
     /**
+     * @var \DateTime $availableOn
+     */
+    protected $availableOn;
+
+    /**
      * {@inheritDoc}
      */
     public function getProduct()
@@ -39,6 +44,24 @@ class Variant extends BaseVariant implements VariantInterface
     public function setObject(VariableInterface $object = null)
     {
         $this->object = $this->product = $object;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAvailableOn()
+    {
+        return $this->availableOn;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setAvailableOn(\DateTime $availableOn = null)
+    {
+        $this->availableOn = $availableOn;
 
         return $this;
     }
