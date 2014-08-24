@@ -19,7 +19,7 @@ class OrderItemAdjustment extends Adjustment implements OrderItemAdjustmentInter
      */
     public function getOrderItem()
     {
-        return $this->adjustable;
+        return $this->orderItem;
     }
 
     /**
@@ -27,7 +27,15 @@ class OrderItemAdjustment extends Adjustment implements OrderItemAdjustmentInter
      */
     public function setOrderItem(OrderItemInterface $orderItem = null)
     {
-        $this->adjustable = $this->orderItem = $orderItem;
+        return $this->setAdjustable($orderItem);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setAdjustable(AdjustableInterface $adjustable = null)
+    {
+        $this->adjustable = $this->orderItem = $adjustable;
 
         return $this;
     }

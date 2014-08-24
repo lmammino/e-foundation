@@ -19,7 +19,7 @@ class OrderAdjustment extends Adjustment implements OrderAdjustmentInterface
      */
     public function getOrder()
     {
-        return $this->adjustable;
+        return $this->order;
     }
 
     /**
@@ -27,7 +27,15 @@ class OrderAdjustment extends Adjustment implements OrderAdjustmentInterface
      */
     public function setOrder(OrderInterface $order = null)
     {
-        $this->adjustable = $this->order = $order;
+        return $this->setAdjustable($order);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setAdjustable(AdjustableInterface $adjustable = null)
+    {
+        $this->adjustable = $this->order = $adjustable;
 
         return $this;
     }

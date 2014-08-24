@@ -2,6 +2,7 @@
 
 namespace LMammino\EFoundation\Cart\Model;
 
+use LMammino\EFoundation\Order\Model\OrderInterface;
 use LMammino\EFoundation\Order\Model\OrderItem;
 
 /**
@@ -21,7 +22,7 @@ class CartItem extends OrderItem implements CartItemInterface
      */
     public function getCart()
     {
-        return $this->order;
+        return $this->cart;
     }
 
     /**
@@ -29,7 +30,15 @@ class CartItem extends OrderItem implements CartItemInterface
      */
     public function setCart(CartInterface $cart = null)
     {
-         $this->order = $this->cart = $cart;
+        return $this->setOrder($cart);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setOrder(OrderInterface $order = null)
+    {
+        $this->order = $this->cart = $order;
 
         return $this;
     }
