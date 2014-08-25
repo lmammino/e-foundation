@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                                      http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="LMammino\EFoundation\Order\Model\Adjustment" table="ef_adjustment">
+        <discriminator-column name="type" type="string" field-name="type" length="8" />
+        <discriminator-map>
+            <discriminator-mapping value="order" class="LMammino\EFoundation\Order\Model\OrderAdjustmentInterface" />
+            <discriminator-mapping value="order_item" class="LMammino\EFoundation\Order\Model\OrderItemAdjustmentInterface" />
+        </discriminator-map>
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="label" column="label" type="string" />
+        <field name="description" column="description" type="string" nullable="true" />
+        <field name="amount" column="amount" type="integer" />
+        <field name="neutral" column="is_neutral" type="boolean" />
+        <field name="createdAt" column="created_at" type="datetime"/>
+        <field name="updatedAt" column="updated_at" type="datetime" nullable="true"/>
+
+        <lifecycle-callbacks>
+            <lifecycle-callback type="prePersist" method="onPrePersist"/>
+            <lifecycle-callback type="preUpdate" method="onPreUpdate"/>
+        </lifecycle-callbacks>
+    </mapped-superclass>
+
+</doctrine-mapping>

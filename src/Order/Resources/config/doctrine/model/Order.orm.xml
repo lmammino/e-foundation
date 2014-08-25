@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                                      http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="LMammino\EFoundation\Order\Model\Order" table="ef_order">
+        <id name="id" column="id" type="integer">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="state" column="state" type="string"/>
+        <field name="currency" column="currency" type="string" length="3"/>
+        <field name="completedAt" column="completed_at" type="datetime" nullable="true" />
+
+        <one-to-many field="items"
+                     target-entity="LMammino\EFoundation\Order\Model\OrderItemInterface"
+                     orphan-removal="true">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-many>
+
+        <one-to-many field="adjustments"
+                     target-entity="LMammino\EFoundation\Order\Model\OrderAdjustmentInterface"
+                     orphan-removal="true">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-many>
+
+        <field name="itemsTotal" column="items_total" type="integer" />
+        <field name="adjustmentsTotal" column="adjustments_total" type="integer" />
+        <field name="total" column="total" type="integer" />
+        <field name="createdAt" column="created_at" type="datetime"/>
+        <field name="updatedAt" column="updated_at" type="datetime" nullable="true"/>
+        <field name="deletedAt" column="deleted_at" type="datetime" nullable="true" />
+
+        <lifecycle-callbacks>
+            <lifecycle-callback type="prePersist" method="onPrePersist"/>
+            <lifecycle-callback type="preUpdate" method="onPreUpdate"/>
+        </lifecycle-callbacks>
+    </mapped-superclass>
+
+</doctrine-mapping>

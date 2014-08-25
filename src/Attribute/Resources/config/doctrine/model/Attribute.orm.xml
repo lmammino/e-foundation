@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          http://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
+
+    <mapped-superclass name="LMammino\EFoundation\Attribute\Model\Attribute" table="ef_attribute">
+        <id name="id" type="integer">
+            <generator strategy="AUTO" />
+        </id>
+
+        <field name="name" column="name" type="string" />
+        <field name="presentation" column="presentation" type="string" />
+        <field name="type" column="type" type="string" />
+        <field name="configuration" column="configuration" type="array" />
+    </mapped-superclass>
+
+</doctrine-mapping>
