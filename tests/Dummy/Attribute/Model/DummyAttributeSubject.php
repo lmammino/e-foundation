@@ -1,6 +1,6 @@
 <?php
 
-namespace LMammino\EFoundation\Tests\Dummy\Model\Attribute;
+namespace LMammino\EFoundation\Tests\Dummy\Attribute\Model;
 
 use LMammino\EFoundation\Attribute\Model\AttributeSubjectInterface;
 use LMammino\EFoundation\Attribute\Model\AttributeSubjectTrait;
@@ -8,7 +8,7 @@ use LMammino\EFoundation\Attribute\Model\AttributeSubjectTrait;
 /**
  * Class DummyAttributeSubject
  *
- * @package LMammino\EFoundation\Tests\Dummy\Model\Attribute
+ * @package LMammino\EFoundation\Tests\Dummy\Attribute\Model
  */
 class DummyAttributeSubject implements AttributeSubjectInterface
 {

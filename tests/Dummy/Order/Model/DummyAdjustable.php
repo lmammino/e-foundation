@@ -1,6 +1,6 @@
 <?php
 
-namespace LMammino\EFoundation\tests\Dummy\Model\Order;
+namespace LMammino\EFoundation\tests\Dummy\Order\Model;
 
 use LMammino\EFoundation\Order\Model\AdjustableInterface;
 use LMammino\EFoundation\Order\Model\AdjustableTrait;
@@ -8,7 +8,7 @@ use LMammino\EFoundation\Order\Model\AdjustableTrait;
 /**
  * Class DummyAdjustable
  *
- * @package LMammino\EFoundation\tests\Dummy\Model\Order
+ * @package LMammino\EFoundation\tests\Dummy\Order\Model
  */
 abstract class DummyAdjustable implements AdjustableInterface
 {
