@@ -16,7 +16,6 @@
 
         <one-to-many field="adjustments"
                      target-entity="LMammino\EFoundation\Order\Model\OrderItemAdjustmentInterface"
-
                      orphan-removal="true">
             <cascade>
                 <cascade-all/>

@@ -6,6 +6,7 @@ use LMammino\EFoundation\Attribute\Model\AttributeSubjectTrait;
 use LMammino\EFoundation\Common\Model\IdentifiableTrait;
 use LMammino\EFoundation\Common\Model\SoftDeletableTrait;
 use LMammino\EFoundation\Common\Model\TimestampableTrait;
+use LMammino\EFoundation\Variation\Model\OptionSubjectTrait;
 use LMammino\EFoundation\Variation\Model\VariableTrait;
 
 /**
@@ -18,6 +19,9 @@ class Product implements ProductInterface
     use IdentifiableTrait;
     use AttributeSubjectTrait {
         AttributeSubjectTrait::__construct as private __attributeSubjectConstruct;
+    }
+    use OptionSubjectTrait {
+        OptionSubjectTrait::__construct as private __optionSubjectConstruct;
     }
     use VariableTrait {
         VariableTrait::__construct as private __variableConstruct;
@@ -64,6 +68,7 @@ class Product implements ProductInterface
     {
         $this->availableOn = new \DateTime();
         $this->__attributeSubjectConstruct();
+        $this->__optionSubjectConstruct();
         $this->__variableConstruct();
         $this->__timestampableConstruct();
     }

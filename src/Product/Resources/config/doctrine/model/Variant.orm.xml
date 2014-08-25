@@ -7,6 +7,11 @@
 
     <mapped-superclass name="LMammino\EFoundation\Product\Model\Variant" table="ef_product_variant">
         <field name="availableOn" column="available_on" type="datetime" />
+        <many-to-one target-entity="LMammino\EFoundation\Product\Model\ProductInterface"
+                     field="product"
+                     inversed-by="variants">
+            <join-column name="product_id" referenced-column-name="id" nullable="true" />
+        </many-to-one>
     </mapped-superclass>
 
 </doctrine-mapping>
