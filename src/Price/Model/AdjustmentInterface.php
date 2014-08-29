@@ -1,6 +1,6 @@
 <?php
 
-namespace LMammino\EFoundation\Order\Model;
+namespace LMammino\EFoundation\Price\Model;
 
 use LMammino\EFoundation\Common\Model\IdentifiableInterface;
 use LMammino\EFoundation\Common\Model\TimestampableInterface;
@@ -8,7 +8,7 @@ use LMammino\EFoundation\Common\Model\TimestampableInterface;
 /**
  * Interface AdjustmentInterface
  *
- * @package LMammino\EFoundation\Order\Model
+ * @package LMammino\EFoundation\Price\Model
  */
 interface AdjustmentInterface extends IdentifiableInterface, TimestampableInterface
 {

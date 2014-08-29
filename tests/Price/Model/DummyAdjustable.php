@@ -1,9 +1,9 @@
 <?php
 
-namespace LMammino\EFoundation\tests\Order\Model;
+namespace LMammino\EFoundation\tests\Price\Model;
 
-use LMammino\EFoundation\Order\Model\AdjustableInterface;
-use LMammino\EFoundation\Order\Model\AdjustableTrait;
+use LMammino\EFoundation\Price\Model\AdjustableInterface;
+use LMammino\EFoundation\Price\Model\AdjustableTrait;
 
 /**
  * Class DummyAdjustable

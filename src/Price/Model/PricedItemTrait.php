@@ -2,7 +2,7 @@
 
 namespace LMammino\EFoundation\Price\Model;
 
-use LMammino\EFoundation\Order\Model\AdjustableTrait;
+use LMammino\EFoundation\Price\Model\AdjustableTrait;
 
 /**
  * Trait PricedItemTrait

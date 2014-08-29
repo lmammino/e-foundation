@@ -1,6 +1,6 @@
 <?php
 
-namespace LMammino\EFoundation\Order\Model;
+namespace LMammino\EFoundation\Price\Model;
 
 use LMammino\EFoundation\Common\Exception\BadMethodCallException;
 use LMammino\EFoundation\Common\Model\IdentifiableTrait;
@@ -9,7 +9,7 @@ use LMammino\EFoundation\Common\Model\TimestampableTrait;
 /**
  * Class Adjustment
  *
- * @package LMammino\EFoundation\Order\Model
+ * @package LMammino\EFoundation\Price\Model
  */
 class Adjustment implements AdjustmentInterface
 {

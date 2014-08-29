@@ -3,7 +3,7 @@
 namespace LMammino\EFoundation\Price\Model;
 
 use Doctrine\Common\Collections\Collection;
-use LMammino\EFoundation\Order\Model\AdjustableInterface;
+use LMammino\EFoundation\Price\Model\AdjustableInterface;
 
 /**
  * Interface PricedItemsContainerInterface

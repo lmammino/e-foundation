@@ -2,12 +2,14 @@
 
 namespace LMammino\EFoundation\Order\Model;
 
+use LMammino\EFoundation\Price\Model\AdjustmentInterface;
+
 /**
  * Interface OrderItemAdjustmentInterface
  *
  * @package LMammino\EFoundation\Order\Model
  */
-interface OrderItemAdjustmentInterface
+interface OrderItemAdjustmentInterface extends AdjustmentInterface
 {
     /**
      * Get orderItem

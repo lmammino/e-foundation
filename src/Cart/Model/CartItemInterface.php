@@ -2,7 +2,7 @@
 
 namespace LMammino\EFoundation\Cart\Model;
 
-use LMammino\EFoundation\Order\Model\AdjustableInterface;
+use LMammino\EFoundation\Price\Model\AdjustableInterface;
 use LMammino\EFoundation\Common\Model\IdentifiableInterface;
 use LMammino\EFoundation\Common\Model\TimestampableInterface;
 use LMammino\EFoundation\Price\Model\PricedItemInterface;

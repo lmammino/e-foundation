@@ -1,8 +1,8 @@
 <?php
 
-namespace LMammino\EFoundation\tests\Order\Model;
+namespace LMammino\EFoundation\tests\Price\Model;
 
-use LMammino\EFoundation\Order\Model\Adjustment;
+use LMammino\EFoundation\Price\Model\Adjustment;
 
 /**
  * Class AdjustmentTest
@@ -29,7 +29,7 @@ class AdjustmentTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_implement_adjustment_interface()
     {
-        $this->assertInstanceOf('\LMammino\EFoundation\Order\Model\AdjustmentInterface', $this->adjustment);
+        $this->assertInstanceOf('\LMammino\EFoundation\Price\Model\AdjustmentInterface', $this->adjustment);
     }
 
     /**
@@ -37,7 +37,7 @@ class AdjustmentTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_handle_an_adjustable()
     {
-        $adjustable = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustableInterface');
+        $adjustable = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustableInterface');
         $this->adjustment->setAdjustable($adjustable);
         $this->assertEquals($adjustable, $this->adjustment->getAdjustable());
     }

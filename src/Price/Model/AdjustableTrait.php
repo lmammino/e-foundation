@@ -1,6 +1,6 @@
 <?php
 
-namespace LMammino\EFoundation\Order\Model;
+namespace LMammino\EFoundation\Price\Model;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Trait AdjustableTrait
  *
- * @package LMammino\EFoundation\Order\Model
+ * @package LMammino\EFoundation\Price\Model
  */
 trait AdjustableTrait
 {

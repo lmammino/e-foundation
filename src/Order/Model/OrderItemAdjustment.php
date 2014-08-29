@@ -2,6 +2,9 @@
 
 namespace LMammino\EFoundation\Order\Model;
 
+use LMammino\EFoundation\Price\Model\AdjustableInterface;
+use LMammino\EFoundation\Price\Model\Adjustment;
+
 /**
  * Class OrderItemAdjustment
  *
