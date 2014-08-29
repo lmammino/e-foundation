@@ -3,6 +3,7 @@
 namespace LMammino\EFoundation\Order\Model;
 
 use LMammino\EFoundation\Common\Model\IdentifiableTrait;
+use LMammino\EFoundation\Price\Model\PricedItemTrait;
 use LMammino\EFoundation\Common\Model\TimestampableTrait;
 
 /**
@@ -19,26 +20,16 @@ class OrderItem implements OrderItemInterface
         TimestampableTrait::onPreUpdate as private __timestampableOnPreUpdate;
     }
     use OrderAwareTrait;
-    use AdjustableTrait {
-        AdjustableTrait::__construct as private __adjustableConstruct;
-        TimestampableTrait::onPrePersist as private __adjustableOnPrePersist;
-        TimestampableTrait::onPreUpdate as private __adjustableOnPreUpdate;
+    use PricedItemTrait {
+        PricedItemTrait::__construct as private __pricedItemConstruct;
+        PricedItemTrait::onPrePersist as private __pricedItemOnPrePersist;
+        PricedItemTrait::onPreUpdate as private __pricedItemOnPreUpdate;
     }
 
     /**
-     * @var float $quantity
+     * @var OrderItemSubjectInterface $subject
      */
-    protected $quantity = 1;
-
-    /**
-     * @var integer $unitPrice
-     */
-    protected $unitPrice;
-
-    /**
-     * @var integer $total
-     */
-    protected $total;
+    protected $subject;
 
     /**
      * Constructor
@@ -46,79 +37,23 @@ class OrderItem implements OrderItemInterface
     public function __construct()
     {
         $this->__timestampableConstruct();
-        $this->__adjustableConstruct();
+        $this->__pricedItemConstruct();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function getQuantity()
+    public function getSubject()
     {
-        return $this->quantity;
+        return $this->subject;
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setQuantity($quantity)
+    public function setSubject(OrderItemSubjectInterface $subject = null)
     {
-        $this->total = null;
-        $this->quantity = $quantity;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getUnitPrice()
-    {
-        return $this->unitPrice;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setUnitPrice($unitPrice)
-    {
-        $this->total = null;
-        $this->unitPrice = $unitPrice;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getTotal()
-    {
-        $this->recalculateTotalIfNeeded();
-
-        return $this->total;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setTotal($total)
-    {
-        $this->total = $total;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function calculateTotal()
-    {
-        $this->calculateAdjustmentsTotal();
-
-        $this->total = ($this->quantity * $this->unitPrice) + $this->adjustmentsTotal;
-
-        if ($this->total < 0) {
-            $this->total = 0;
-        }
+        $this->subject = $subject;
 
         return $this;
     }
@@ -149,8 +84,7 @@ class OrderItem implements OrderItemInterface
     public function onPrePersist()
     {
         $this->__timestampableOnPrePersist();
-        $this->__adjustableOnPrePersist();
-        $this->recalculateTotalIfNeeded();
+        $this->__pricedItemOnPrePersist();
     }
 
     /**
@@ -159,25 +93,6 @@ class OrderItem implements OrderItemInterface
     public function onPreUpdate()
     {
         $this->__timestampableOnPreUpdate();
-        $this->__adjustableOnPreUpdate();
-        $this->recalculateTotalIfNeeded();
-    }
-
-    /**
-     * Recalculates the total if needed
-     */
-    protected function recalculateTotalIfNeeded()
-    {
-        if (null === $this->total) {
-            $this->calculateTotal();
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    protected function onAdjustmentsChange()
-    {
-        $this->total = null;
+        $this->__pricedItemOnPreUpdate();
     }
 }

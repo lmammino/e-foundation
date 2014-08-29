@@ -40,6 +40,5 @@ class CartItemTest extends \PHPUnit_Framework_TestCase
         $cart = $this->getMock('\LMammino\EFoundation\Cart\Model\CartInterface');
         $this->cartItem->setCart($cart);
         $this->assertSame($cart, $this->cartItem->getCart());
-        $this->assertSame($this->cartItem->getCart(), $this->cartItem->getOrder());
     }
 }

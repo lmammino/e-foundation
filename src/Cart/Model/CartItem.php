@@ -2,44 +2,77 @@
 
 namespace LMammino\EFoundation\Cart\Model;
 
-use LMammino\EFoundation\Order\Model\OrderInterface;
-use LMammino\EFoundation\Order\Model\OrderItem;
+use LMammino\EFoundation\Common\Model\IdentifiableTrait;
+use LMammino\EFoundation\Common\Model\TimestampableTrait;
+use LMammino\EFoundation\Price\Model\PricedItemTrait;
 
 /**
  * Class CartItem
  *
  * @package LMammino\EFoundation\Cart\Model
  */
-class CartItem extends OrderItem implements CartItemInterface
+class CartItem implements CartItemInterface
 {
-    /**
-     * @var CartInterface $cart
-     */
-    protected $cart;
+    use IdentifiableTrait;
+    use CartAwareTrait;
+    use PricedItemTrait {
+        PricedItemTrait::__construct as private __pricedItemConstruct;
+        PricedItemTrait::onPrePersist as private __pricedItemOnPrePersist;
+        PricedItemTrait::onPreUpdate as private __pricedItemOnPreUpdate;
+    }
+    use TimestampableTrait {
+        TimestampableTrait::__construct as private __timestampableConstruct;
+        TimestampableTrait::onPrePersist as private __timestampableOnPrePersist;
+        TimestampableTrait::onPreUpdate as private __timestampableOnPreUpdate;
+    }
 
     /**
-     * {@inheritDoc}
+     * @var CartItemSubjectInterface $subject
      */
-    public function getCart()
+    protected $subject;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
     {
-        return $this->cart;
+        $this->__timestampableConstruct();
+        $this->__pricedItemConstruct();
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setCart(CartInterface $cart = null)
+    public function getSubject()
     {
-        return $this->setOrder($cart);
+        return $this->subject;
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setOrder(OrderInterface $order = null)
+    public function setSubject(CartItemSubjectInterface $subject = null)
     {
-        $this->order = $this->cart = $order;
+        $this->subject = $subject;
 
         return $this;
+    }
+
+    /**
+     * On pre persist
+     */
+    public function onPrePersist()
+    {
+        $this->__timestampableOnPrePersist();
+        $this->__pricedItemOnPrePersist();
+    }
+
+    /**
+     * On pre update
+     */
+    public function onPreUpdate()
+    {
+        $this->__timestampableOnPreUpdate();
+        $this->__pricedItemOnPreUpdate();
     }
 }
