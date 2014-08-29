@@ -1,6 +1,6 @@
 <?php
 
-namespace LMammino\EFoundation\Tests\Dummy\Variation\Model;
+namespace LMammino\EFoundation\Tests\Variation\Model;
 
 use LMammino\EFoundation\Variation\Model\OptionSubjectInterface;
 use LMammino\EFoundation\Variation\Model\OptionSubjectTrait;
@@ -8,7 +8,7 @@ use LMammino\EFoundation\Variation\Model\OptionSubjectTrait;
 /**
  * Class DummyOptionSubject
  *
- * @package LMammino\EFoundation\Tests\Dummy\Variation\Model
+ * @package LMammino\EFoundation\Tests\Variation\Model
  */
 class DummyOptionSubject implements OptionSubjectInterface
 {
