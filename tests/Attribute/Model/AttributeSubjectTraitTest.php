@@ -3,7 +3,6 @@
 namespace LMammino\EFoundation\Tests\Attribute\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use LMammino\EFoundation\Tests\Dummy\Attribute\Model\DummyAttributeSubject;
 
 /**
  * Class AttributeSubjectTraitTest

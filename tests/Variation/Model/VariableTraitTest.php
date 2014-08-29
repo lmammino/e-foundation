@@ -3,7 +3,6 @@
 namespace LMammino\EFoundation\Tests\Variation\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use LMammino\EFoundation\Tests\Dummy\Variation\Model\DummyVariable;
 
 /**
  * Class VariableTraitTest

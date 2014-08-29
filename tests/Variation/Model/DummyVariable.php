@@ -1,6 +1,6 @@
 <?php
 
-namespace LMammino\EFoundation\Tests\Dummy\Variation\Model;
+namespace LMammino\EFoundation\Tests\Variation\Model;
 
 use LMammino\EFoundation\Common\Model\IdentifiableTrait;
 use LMammino\EFoundation\Common\Model\TimestampableTrait;
@@ -10,7 +10,7 @@ use LMammino\EFoundation\Variation\Model\VariableTrait;
 /**
  * Class DummyVariable
  *
- * @package LMammino\EFoundation\Tests\Dummy\Variation\Model
+ * @package LMammino\EFoundation\Tests\Variation\Model
  */
 class DummyVariable implements VariableInterface
 {

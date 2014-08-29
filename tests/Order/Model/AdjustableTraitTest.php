@@ -12,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var \LMammino\EFoundation\Tests\Dummy\Order\Model\DummyAdjustable $adjustableTrait
+     * @var \LMammino\EFoundation\Tests\Order\Model\DummyAdjustable $adjustableTrait
      */
     private $adjustableTrait;
 
@@ -22,7 +22,7 @@ class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
     protected function setup()
     {
         $this->adjustableTrait =
-            $this->getMockForAbstractClass('\LMammino\EFoundation\Tests\Dummy\Order\Model\DummyAdjustable');
+            $this->getMockForAbstractClass('\LMammino\EFoundation\Tests\Order\Model\DummyAdjustable');
     }
 
     /**
