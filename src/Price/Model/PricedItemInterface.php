@@ -1,36 +1,31 @@
 <?php
 
-namespace LMammino\EFoundation\Order\Model;
+namespace LMammino\EFoundation\Price\Model;
 
-use LMammino\EFoundation\Common\Model\IdentifiableInterface;
-use LMammino\EFoundation\Common\Model\TimestampableInterface;
+use LMammino\EFoundation\Order\Model\AdjustableInterface;
 
 /**
- * Interface OrderItemInterface
+ * Interface PricedItemInterface
  *
- * @package LMammino\EFoundation\Order\Model
+ * @package LMammino\EFoundation\Price\Model
  */
-interface OrderItemInterface extends
-    AdjustableInterface,
-    IdentifiableInterface,
-    OrderAwareInterface,
-    TimestampableInterface
+interface PricedItemInterface extends AdjustableInterface
 {
     /**
-     * Get variant
+     * Get the container
      *
-     * @return OrderItemSubjectInterface
+     * @return PricedItemsContainerInterface
      */
-    public function getSubject();
+    public function getContainer();
 
     /**
-     * Set variant
+     * Set the container
      *
-     * @param OrderItemSubjectInterface $subject
+     * @param PricedItemsContainerInterface $container
      *
      * @return $this
      */
-    public function setSubject(OrderItemSubjectInterface $subject = null);
+    public function setContainer(PricedItemsContainerInterface $container = null);
 
     /**
      * Get quantity
@@ -88,20 +83,20 @@ interface OrderItemInterface extends
     public function calculateTotal();
 
     /**
-     * Checks if the current order item is equal to a given order item
+     * Check if the current item is equal to a given one
      *
-     * @param OrderItemInterface $orderItem
+     * @param PricedItemInterface $item
      *
      * @return boolean
      */
-    public function equals(OrderItemInterface $orderItem);
+    public function equals(PricedItemInterface $item);
 
     /**
-     * Merges two order items. The current order item will result with an increased quantity
+     * Merges the current item with another one
      *
-     * @param OrderItemInterface $orderItem
+     * @param PricedItemInterface $item
      *
      * @return $this
      */
-    public function merge(OrderItemInterface $orderItem);
+    public function merge(PricedItemInterface $item);
 }

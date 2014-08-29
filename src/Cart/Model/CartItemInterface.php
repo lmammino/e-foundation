@@ -2,26 +2,35 @@
 
 namespace LMammino\EFoundation\Cart\Model;
 
+use LMammino\EFoundation\Order\Model\AdjustableInterface;
+use LMammino\EFoundation\Common\Model\IdentifiableInterface;
+use LMammino\EFoundation\Common\Model\TimestampableInterface;
+use LMammino\EFoundation\Price\Model\PricedItemInterface;
+
 /**
  * Interface CartItemInterface
  *
  * @package LMammino\EFoundation\Cart\Model
  */
-interface CartItemInterface
+interface CartItemInterface extends
+    IdentifiableInterface,
+    CartAwareInterface,
+    PricedItemInterface,
+    TimestampableInterface
 {
     /**
-     * Get cart
+     * Get variant
      *
-     * @return CartInterface
+     * @return CartItemSubjectInterface
      */
-    public function getCart();
+    public function getSubject();
 
     /**
-     * Set cart
+     * Set variant
      *
-     * @param CartInterface $cart
+     * @param CartItemSubjectInterface $subject
      *
      * @return $this
      */
-    public function setCart(CartInterface $cart = null);
+    public function setSubject(CartItemSubjectInterface $subject = null);
 }

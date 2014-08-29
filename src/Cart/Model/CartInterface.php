@@ -2,15 +2,76 @@
 
 namespace LMammino\EFoundation\Cart\Model;
 
-use LMammino\EFoundation\Order\Model\OrderInterface;
+use LMammino\EFoundation\Common\Model\IdentifiableInterface;
+use LMammino\EFoundation\Common\Model\SoftDeletableInterface;
+use LMammino\EFoundation\Common\Model\TimestampableInterface;
+use LMammino\EFoundation\Owner\Model\OwnerAwareInterface;
+use LMammino\EFoundation\Price\Model\PricedItemsContainerInterface;
 
 /**
  * Interface CartInterface
  *
  * @package LMammino\EFoundation\Cart\Model
  */
-interface CartInterface extends OrderInterface
+interface CartInterface extends
+    OwnerAwareInterface,
+    PricedItemsContainerInterface,
+    IdentifiableInterface,
+    TimestampableInterface,
+    SoftDeletableInterface
 {
+    /**
+     * State constants
+     */
+    const STATE_CART        = 'cart';
+    const STATE_CART_LOCKED = 'cart_locked';
+
+    /**
+     * Check if the order is completed
+     *
+     * @return boolean
+     */
+    public function isCompleted();
+
+    /**
+     * Mark the order as complete
+     *
+     * @return $this
+     */
+    public function complete();
+
+    /**
+     * Get the completion date
+     *
+     * @return \DateTime
+     */
+    public function getCompletedAt();
+
+    /**
+     * Set completed at date
+     *
+     * @param \DateTime $completedAt
+     *
+     * @return $this
+     */
+    public function setCompletedAt(\DateTime $completedAt);
+
+    /**
+     * Get the order state
+     *
+     * @return string
+     */
+    public function getState();
+
+    /**
+     * Set state
+     *
+     * @param string $state
+     *
+     * @return $this
+     */
+    public function setState($state);
+
     /**
      * Gets expiration time.
      *
