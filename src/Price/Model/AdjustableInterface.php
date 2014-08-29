@@ -1,13 +1,13 @@
 <?php
 
-namespace LMammino\EFoundation\Order\Model;
+namespace LMammino\EFoundation\Price\Model;
 
 use Doctrine\Common\Collections\Collection;
 
 /**
  * Interface AdjustableInterface
  *
- * @package LMammino\EFoundation\Order\Model
+ * @package LMammino\EFoundation\Price\Model
  */
 interface AdjustableInterface
 {

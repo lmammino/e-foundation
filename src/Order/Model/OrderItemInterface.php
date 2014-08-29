@@ -4,6 +4,7 @@ namespace LMammino\EFoundation\Order\Model;
 
 use LMammino\EFoundation\Common\Model\IdentifiableInterface;
 use LMammino\EFoundation\Common\Model\TimestampableInterface;
+use LMammino\EFoundation\Price\Model\AdjustableInterface;
 
 /**
  * Interface OrderItemInterface

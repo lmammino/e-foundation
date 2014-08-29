@@ -2,7 +2,7 @@
 
 namespace LMammino\EFoundation\Price\Model;
 
-use LMammino\EFoundation\Order\Model\AdjustableInterface;
+use LMammino\EFoundation\Price\Model\AdjustableInterface;
 
 /**
  * Interface PricedItemInterface

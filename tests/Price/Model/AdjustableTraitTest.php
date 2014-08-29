@@ -1,6 +1,6 @@
 <?php
 
-namespace LMammino\EFoundation\tests\Order\Model;
+namespace LMammino\EFoundation\tests\Price\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -12,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var \LMammino\EFoundation\Tests\Order\Model\DummyAdjustable $adjustableTrait
+     * @var \LMammino\EFoundation\Tests\Price\Model\DummyAdjustable $adjustableTrait
      */
     private $adjustableTrait;
 
@@ -22,7 +22,7 @@ class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
     protected function setup()
     {
         $this->adjustableTrait =
-            $this->getMockForAbstractClass('\LMammino\EFoundation\Tests\Order\Model\DummyAdjustable');
+            $this->getMockForAbstractClass('\LMammino\EFoundation\Tests\Price\Model\DummyAdjustable');
     }
 
     /**
@@ -30,7 +30,7 @@ class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_handle_adjustments()
     {
-        $adjustment = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment->expects($this->once())
                    ->method('setAdjustable')
                    ->with($this->adjustableTrait);
@@ -44,7 +44,7 @@ class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_add_an_adjustment()
     {
-        $adjustment = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment->expects($this->once())
             ->method('setAdjustable')
             ->with($this->adjustableTrait);
@@ -57,7 +57,7 @@ class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_check_if_has_an_adjustment()
     {
-        $adjustment = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $this->adjustableTrait->addAdjustment($adjustment);
         $this->assertTrue($this->adjustableTrait->hasAdjustment($adjustment));
     }
@@ -67,7 +67,7 @@ class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_remove_an_adjustment()
     {
-        $adjustment = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $this->adjustableTrait->addAdjustment($adjustment);
         $this->assertTrue($this->adjustableTrait->hasAdjustment($adjustment));
         $adjustment->expects($this->once())
@@ -82,8 +82,8 @@ class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_clear_adjustments()
     {
-        $this->adjustableTrait->addAdjustment($this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface'));
-        $this->adjustableTrait->addAdjustment($this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface'));
+        $this->adjustableTrait->addAdjustment($this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface'));
+        $this->adjustableTrait->addAdjustment($this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface'));
         $this->assertNotEmpty($this->adjustableTrait->getAdjustments());
         $this->adjustableTrait->clearAdjustments();
         $this->assertEmpty($this->adjustableTrait->getAdjustments());
@@ -94,17 +94,17 @@ class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_calculate_adjustments_total()
     {
-        $adjustment1 = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment1 = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment1->expects($this->once())
             ->method('getAmount')
             ->willReturn(17);
 
-        $adjustment2 = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment2 = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment2->expects($this->once())
             ->method('getAmount')
             ->willReturn(-13);
 
-        $adjustment3 = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment3 = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment3->expects($this->never())
             ->method('getAmount');
         $adjustment3->expects($this->once())
@@ -125,17 +125,17 @@ class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_dinamically_recalculate_adjustments_total()
     {
-        $adjustment1 = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment1 = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment1->expects($this->exactly(2))
             ->method('getAmount')
             ->willReturn(17);
 
-        $adjustment2 = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment2 = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment2->expects($this->exactly(2))
             ->method('getAmount')
             ->willReturn(-13);
 
-        $adjustment3 = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment3 = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment3->expects($this->never())
             ->method('getAmount');
         $adjustment3->expects($this->exactly(2))
@@ -148,7 +148,7 @@ class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(4, $this->adjustableTrait->getAdjustmentTotal());
 
-        $adjustment4 = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment4 = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment4->expects($this->once())
             ->method('getAmount')
             ->willReturn(-4);
@@ -163,7 +163,7 @@ class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_not_add_the_same_adjustment_twice()
     {
-        $adjustment = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
 
         $this->adjustableTrait->addAdjustment($adjustment)
             ->addAdjustment($adjustment);
@@ -176,12 +176,12 @@ class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_recalculate_adjustments_total_on_pre_persist()
     {
-        $adjustment1 = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment1 = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment1->expects($this->exactly(2))
             ->method('getAmount')
             ->willReturn(17);
 
-        $adjustment2 = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment2 = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment2->expects($this->exactly(1))
             ->method('getAmount')
             ->willReturn(-13);
@@ -202,12 +202,12 @@ class AdjustableTraitTest extends \PHPUnit_Framework_TestCase
      */
     public function it_should_recalculate_adjustments_total_on_pre_update()
     {
-        $adjustment1 = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment1 = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment1->expects($this->exactly(2))
             ->method('getAmount')
             ->willReturn(17);
 
-        $adjustment2 = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment2 = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment2->expects($this->exactly(1))
             ->method('getAmount')
             ->willReturn(-13);

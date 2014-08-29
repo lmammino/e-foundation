@@ -261,7 +261,7 @@ class PricedItemsContainerTraitTest extends \PHPUnit_Framework_TestCase
               ->method('getTotal')
               ->willReturn($price2);
 
-        $adjustment = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment->expects($this->once())
                    ->method('getAmount')
                    ->willReturn($adjustmentPrice);
@@ -287,7 +287,7 @@ class PricedItemsContainerTraitTest extends \PHPUnit_Framework_TestCase
              ->method('getTotal')
              ->willReturn($price);
 
-        $adjustment = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment->expects($this->once())
                    ->method('getAmount')
                    ->willReturn($adjustmentPrice);
@@ -320,7 +320,7 @@ class PricedItemsContainerTraitTest extends \PHPUnit_Framework_TestCase
               ->method('getTotal')
               ->willReturn($price2);
 
-        $adjustment = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment->expects($this->atLeast(1))
                    ->method('getAmount')
                    ->willReturn($adjustmentPrice);
@@ -415,7 +415,7 @@ class PricedItemsContainerTraitTest extends \PHPUnit_Framework_TestCase
               ->method('getTotal')
               ->willReturn($price2);
 
-        $adjustment = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment->expects($this->atLeast(1))
                    ->method('getAmount')
                    ->willReturn($adjustmentPrice);
@@ -452,7 +452,7 @@ class PricedItemsContainerTraitTest extends \PHPUnit_Framework_TestCase
               ->method('getTotal')
               ->willReturn($price2);
 
-        $adjustment = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment->expects($this->atLeast(1))
                    ->method('getAmount')
                    ->willReturn($adjustmentPrice);

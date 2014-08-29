@@ -4,7 +4,7 @@ namespace LMammino\EFoundation\Price\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use LMammino\EFoundation\Order\Model\AdjustableTrait;
+use LMammino\EFoundation\Price\Model\AdjustableTrait;
 
 /**
  * Class PricedItemsContainerTrait

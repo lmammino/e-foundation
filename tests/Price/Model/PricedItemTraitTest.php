@@ -110,7 +110,7 @@ class PricedItemTraitTest extends \PHPUnit_Framework_TestCase
         $discount = -10;
         $expectedTotal = 15;
 
-        $adjustment = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment->expects($this->once())
             ->method('getAmount')
             ->willReturn($discount);
@@ -133,7 +133,7 @@ class PricedItemTraitTest extends \PHPUnit_Framework_TestCase
         $expectedTotal1 = 25;
         $expectedTotal2 = 15;
 
-        $adjustment = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment->expects($this->once())
             ->method('getAmount')
             ->willReturn($discount);
@@ -167,7 +167,7 @@ class PricedItemTraitTest extends \PHPUnit_Framework_TestCase
         $expectedTotal1 = 25;
         $expectedTotal2 = 15;
 
-        $adjustment = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment->expects($this->exactly(2))
                    ->method('getAmount')
                    ->willReturn($discount);
@@ -195,7 +195,7 @@ class PricedItemTraitTest extends \PHPUnit_Framework_TestCase
         $expectedTotal1 = 25;
         $expectedTotal2 = 15;
 
-        $adjustment = $this->getMock('\LMammino\EFoundation\Order\Model\AdjustmentInterface');
+        $adjustment = $this->getMock('\LMammino\EFoundation\Price\Model\AdjustmentInterface');
         $adjustment->expects($this->exactly(2))
                    ->method('getAmount')
                    ->willReturn($discount);
