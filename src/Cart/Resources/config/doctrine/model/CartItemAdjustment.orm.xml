@@ -4,11 +4,11 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           http://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
 
-    <entity name="LMammino\EFoundation\Order\Model\OrderItemAdjustment" table="ef_order_item_adjustment">
-        <many-to-one target-entity="LMammino\EFoundation\Order\Model\OrderItemInterface"
-                    field="orderItem"
-                    inversed-by="adjustments">
-            <join-column name="order_item_id" referenced-column-name="id" nullable="true" />
+    <entity name="LMammino\EFoundation\Cart\Model\CartItemAdjustment" table="ef_cart_item_adjustment">
+        <many-to-one target-entity="LMammino\EFoundation\Cart\Model\CartItemInterface"
+                     field="cartItem"
+                     inversed-by="adjustments">
+            <join-column name="cart_item_id" referenced-column-name="id" nullable="true" />
         </many-to-one>
     </entity>
 

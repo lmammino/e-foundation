@@ -4,7 +4,7 @@ namespace LMammino\EFoundation\Order\Model;
 
 use LMammino\EFoundation\Common\Model\IdentifiableInterface;
 use LMammino\EFoundation\Common\Model\TimestampableInterface;
-use LMammino\EFoundation\Price\Model\AdjustableInterface;
+use LMammino\EFoundation\Price\Model\PricedItemInterface;
 
 /**
  * Interface OrderItemInterface
@@ -12,9 +12,9 @@ use LMammino\EFoundation\Price\Model\AdjustableInterface;
  * @package LMammino\EFoundation\Order\Model
  */
 interface OrderItemInterface extends
-    AdjustableInterface,
     IdentifiableInterface,
     OrderAwareInterface,
+    PricedItemInterface,
     TimestampableInterface
 {
     /**
@@ -32,77 +32,4 @@ interface OrderItemInterface extends
      * @return $this
      */
     public function setSubject(OrderItemSubjectInterface $subject = null);
-
-    /**
-     * Get quantity
-     *
-     * @return float
-     */
-    public function getQuantity();
-
-    /**
-     * Set quantity
-     *
-     * @param float $quantity
-     *
-     * @return $this
-     */
-    public function setQuantity($quantity);
-
-    /**
-     * Get unit price
-     *
-     * @return integer
-     */
-    public function getUnitPrice();
-
-    /**
-     * Set unit price
-     *
-     * @param integer $unitPrice
-     *
-     * @return $this
-     */
-    public function setUnitPrice($unitPrice);
-
-    /**
-     * get the total for the item
-     *
-     * @return integer
-     */
-    public function getTotal();
-
-    /**
-     * Set the total for the item
-     *
-     * @param integer $total
-     *
-     * @return $this
-     */
-    public function setTotal($total);
-
-    /**
-     * Calculates the total for the item
-     *
-     * @return $this
-     */
-    public function calculateTotal();
-
-    /**
-     * Checks if the current order item is equal to a given order item
-     *
-     * @param OrderItemInterface $orderItem
-     *
-     * @return boolean
-     */
-    public function equals(OrderItemInterface $orderItem);
-
-    /**
-     * Merges two order items. The current order item will result with an increased quantity
-     *
-     * @param OrderItemInterface $orderItem
-     *
-     * @return $this
-     */
-    public function merge(OrderItemInterface $orderItem);
 }

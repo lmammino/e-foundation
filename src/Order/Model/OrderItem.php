@@ -3,7 +3,7 @@
 namespace LMammino\EFoundation\Order\Model;
 
 use LMammino\EFoundation\Common\Model\IdentifiableTrait;
-use LMammino\EFoundation\Price\Model\PricedItemTrait;
+use LMammino\EFoundation\Price\Model\PricedItem;
 use LMammino\EFoundation\Common\Model\TimestampableTrait;
 
 /**
@@ -11,7 +11,7 @@ use LMammino\EFoundation\Common\Model\TimestampableTrait;
  *
  * @package LMammino\EFoundation\Order\Model
  */
-class OrderItem implements OrderItemInterface
+class OrderItem extends PricedItem implements OrderItemInterface
 {
     use IdentifiableTrait;
     use TimestampableTrait {
@@ -20,11 +20,6 @@ class OrderItem implements OrderItemInterface
         TimestampableTrait::onPreUpdate as private __timestampableOnPreUpdate;
     }
     use OrderAwareTrait;
-    use PricedItemTrait {
-        PricedItemTrait::__construct as private __pricedItemConstruct;
-        PricedItemTrait::onPrePersist as private __pricedItemOnPrePersist;
-        PricedItemTrait::onPreUpdate as private __pricedItemOnPreUpdate;
-    }
 
     /**
      * @var OrderItemSubjectInterface $subject
@@ -36,8 +31,8 @@ class OrderItem implements OrderItemInterface
      */
     public function __construct()
     {
+        parent::__construct();
         $this->__timestampableConstruct();
-        $this->__pricedItemConstruct();
     }
 
     /**
@@ -59,32 +54,12 @@ class OrderItem implements OrderItemInterface
     }
 
     /**
-     * {@inheritDoc}
-     */
-    public function equals(OrderItemInterface $orderItem)
-    {
-        return $this === $orderItem;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function merge(OrderItemInterface $orderItem)
-    {
-        if ($this !== $orderItem) {
-            $this->quantity += $orderItem->getQuantity();
-        }
-
-        return $this;
-    }
-
-    /**
      * On pre persist
      */
     public function onPrePersist()
     {
+        parent::onPrePersist();
         $this->__timestampableOnPrePersist();
-        $this->__pricedItemOnPrePersist();
     }
 
     /**
@@ -92,7 +67,7 @@ class OrderItem implements OrderItemInterface
      */
     public function onPreUpdate()
     {
+        parent::onPreUpdate();
         $this->__timestampableOnPreUpdate();
-        $this->__pricedItemOnPreUpdate();
     }
 }

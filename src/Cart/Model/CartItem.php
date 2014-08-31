@@ -4,22 +4,17 @@ namespace LMammino\EFoundation\Cart\Model;
 
 use LMammino\EFoundation\Common\Model\IdentifiableTrait;
 use LMammino\EFoundation\Common\Model\TimestampableTrait;
-use LMammino\EFoundation\Price\Model\PricedItemTrait;
+use LMammino\EFoundation\Price\Model\PricedItem;
 
 /**
  * Class CartItem
  *
  * @package LMammino\EFoundation\Cart\Model
  */
-class CartItem implements CartItemInterface
+class CartItem extends PricedItem implements CartItemInterface
 {
     use IdentifiableTrait;
     use CartAwareTrait;
-    use PricedItemTrait {
-        PricedItemTrait::__construct as private __pricedItemConstruct;
-        PricedItemTrait::onPrePersist as private __pricedItemOnPrePersist;
-        PricedItemTrait::onPreUpdate as private __pricedItemOnPreUpdate;
-    }
     use TimestampableTrait {
         TimestampableTrait::__construct as private __timestampableConstruct;
         TimestampableTrait::onPrePersist as private __timestampableOnPrePersist;
@@ -36,8 +31,8 @@ class CartItem implements CartItemInterface
      */
     public function __construct()
     {
+        parent::__construct();
         $this->__timestampableConstruct();
-        $this->__pricedItemConstruct();
     }
 
     /**
@@ -63,8 +58,8 @@ class CartItem implements CartItemInterface
      */
     public function onPrePersist()
     {
+        parent::onPrePersist();
         $this->__timestampableOnPrePersist();
-        $this->__pricedItemOnPrePersist();
     }
 
     /**
@@ -72,7 +67,7 @@ class CartItem implements CartItemInterface
      */
     public function onPreUpdate()
     {
+        parent::onPreUpdate();
         $this->__timestampableOnPreUpdate();
-        $this->__pricedItemOnPreUpdate();
     }
 }

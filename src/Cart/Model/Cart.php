@@ -6,14 +6,14 @@ use LMammino\EFoundation\Common\Model\IdentifiableTrait;
 use LMammino\EFoundation\Common\Model\SoftDeletableTrait;
 use LMammino\EFoundation\Common\Model\TimestampableTrait;
 use LMammino\EFoundation\Owner\Model\OwnerAwareTrait;
-use LMammino\EFoundation\Price\Model\PricedItemsContainerTrait;
+use LMammino\EFoundation\Price\Model\PricedItemsContainer;
 
 /**
  * Class Cart
  *
  * @package LMammino\EFoundation\Cart\Model
  */
-class Cart implements CartInterface
+class Cart extends PricedItemsContainer implements CartInterface
 {
     use IdentifiableTrait;
     use OwnerAwareTrait;
@@ -23,11 +23,6 @@ class Cart implements CartInterface
         TimestampableTrait::onPreUpdate as private __timestampableOnPreUpdate;
     }
     use SoftDeletableTrait;
-    use PricedItemsContainerTrait {
-        PricedItemsContainerTrait::__construct as private __pricedItemsContainerConstruct;
-        PricedItemsContainerTrait::onPrePersist as private __pricedItemsContainerOnPrePersist;
-        PricedItemsContainerTrait::onPreUpdate as private __pricedItemsContainerOnPreUpdate;
-    }
 
     /**
      * @var string $state
@@ -49,8 +44,8 @@ class Cart implements CartInterface
      */
     public function __construct()
     {
+        parent::__construct();
         $this->__timestampableConstruct();
-        $this->__pricedItemsContainerConstruct();
     }
 
     /**
@@ -164,8 +159,8 @@ class Cart implements CartInterface
      */
     public function onPrePersist()
     {
+        parent::onPrePersist();
         $this->__timestampableOnPrePersist();
-        $this->__pricedItemsContainerOnPrePersist();
     }
 
     /**
@@ -173,7 +168,7 @@ class Cart implements CartInterface
      */
     public function onPreUpdate()
     {
+        parent::onPreUpdate();
         $this->__timestampableOnPreUpdate();
-        $this->__pricedItemsContainerOnPreUpdate();
     }
 }
