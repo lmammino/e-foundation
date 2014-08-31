@@ -7,16 +7,14 @@ use LMammino\EFoundation\Owner\Model\OwnerAwareTrait;
 use LMammino\EFoundation\Common\Model\SoftDeletableTrait;
 use LMammino\EFoundation\Common\Model\TimestampableTrait;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use LMammino\EFoundation\Price\Model\PricedItemsContainerTrait;
+use LMammino\EFoundation\Price\Model\PricedItemsContainer;
 
 /**
  * Class Order
  *
  * @package LMammino\EFoundation\Order\Model
  */
-class Order implements OrderInterface
+class Order extends PricedItemsContainer implements OrderInterface
 {
     use IdentifiableTrait;
     use OwnerAwareTrait;
@@ -26,11 +24,6 @@ class Order implements OrderInterface
         TimestampableTrait::onPreUpdate as private __timestampableOnPreUpdate;
     }
     use SoftDeletableTrait;
-    use PricedItemsContainerTrait {
-        PricedItemsContainerTrait::__construct as private __pricedItemsContainerConstruct;
-        PricedItemsContainerTrait::onPrePersist as private __pricedItemsContainerOnPrePersist;
-        PricedItemsContainerTrait::onPreUpdate as private __pricedItemsContainerOnPreUpdate;
-    }
 
     /**
      * @var string $state
@@ -48,8 +41,8 @@ class Order implements OrderInterface
      */
     public function __construct()
     {
+        parent::__construct();
         $this->__timestampableConstruct();
-        $this->__pricedItemsContainerConstruct();
     }
 
     /**
@@ -111,8 +104,8 @@ class Order implements OrderInterface
      */
     public function onPrePersist()
     {
+        parent::onPrePersist();
         $this->__timestampableOnPrePersist();
-        $this->__pricedItemsContainerOnPrePersist();
     }
 
     /**
@@ -120,7 +113,7 @@ class Order implements OrderInterface
      */
     public function onPreUpdate()
     {
+        parent::onPreUpdate();
         $this->__timestampableOnPreUpdate();
-        $this->__pricedItemsContainerOnPreUpdate();
     }
 }
