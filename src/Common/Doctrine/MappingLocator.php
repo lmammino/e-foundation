@@ -16,7 +16,7 @@ class MappingLocator
      */
     public static function getMappings()
     {
-        $basePath = __DIR__.'/../../';
+        $basePath = self::getBasePath();
 
         return array(
             realpath($basePath.'Address/Resources/config/doctrine/model') => 'LMammino\EFoundation\Address\Model',
@@ -29,5 +29,27 @@ class MappingLocator
             realpath($basePath.'Variation/Resources/config/doctrine/model') =>
                 'LMammino\EFoundation\Variation\Model',
         );
+    }
+
+    /**
+     * Get the default resolves association map
+     *
+     * @return array
+     */
+    public static function getDefaultResolves()
+    {
+        $defaultResolves = require(self::getBasePath().'Common/Resources/config/doctrine/optimized_resolve.php');
+
+        return $defaultResolves;
+    }
+
+    /**
+     * Get base path
+     *
+     * @return string
+     */
+    private static function getBasePath()
+    {
+        return __DIR__.'/../../';
     }
 }

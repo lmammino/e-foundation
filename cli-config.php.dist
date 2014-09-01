@@ -1,0 +1,49 @@
+<?php
+
+// RENAME THIS FILE INTO cli-config.php AND EDIT YOUR DATABASE SETTING TO ENABLE FULL SUPPORT TO THE DOCTRINE CONSOLE
+
+use Doctrine\ORM\Tools\Console\ConsoleRunner;
+
+$config = new \Doctrine\ORM\Configuration();
+$config->setMetadataCacheImpl(new \Doctrine\Common\Cache\ArrayCache);
+$config->setProxyDir(__DIR__ . '/cache/Proxies');
+$config->setProxyNamespace('Proxies');
+
+$fileLocator = new \Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator(
+    \LMammino\EFoundation\Common\Doctrine\MappingLocator::getMappings(),
+    '.orm.xml'
+);
+
+$driver = new \Doctrine\ORM\Mapping\Driver\XmlDriver($fileLocator);
+
+$config->setMetadataDriverImpl($driver);
+
+$rteListener = new \Doctrine\ORM\Tools\ResolveTargetEntityListener();
+
+$defaultResolves = \LMammino\EFoundation\Common\Doctrine\MappingLocator::getDefaultResolves();
+foreach ($defaultResolves as $interface => $class) {
+    $rteListener->addResolveTargetEntity(
+        $interface,
+        $class,
+        array()
+    );
+}
+
+//$connectionOptions = array(
+//    'driver' => 'pdo_sqlite',
+//    'path' => 'database.sqlite'
+//);
+
+$connectionOptions = array(
+    'dbname' => 'e_foundation',
+    'user' => 'root',
+    'password' => 'root',
+    'host' => '127.0.0.1',
+    'driver' => 'pdo_mysql',
+);
+
+$em = \Doctrine\ORM\EntityManager::create($connectionOptions, $config);
+
+$em->getEventManager()->addEventListener(\Doctrine\ORM\Events::loadClassMetadata, $rteListener);
+
+return ConsoleRunner::createHelperSet($em);
