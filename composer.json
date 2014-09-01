@@ -1,6 +1,8 @@
 {
     "name": "lmammino/e-foundation",
     "description": "A set of classes that can be useful to build your own PHP e-commerce solution. Heavily inspired by Sylius and Spreecommerce",
+    "keywords": ["e-commerce"],
+    "homepage": "https://github.com/lmammino/e-foundation",
     "type" : "library",
     "minimum-stability": "dev",
     "license": "MIT",
