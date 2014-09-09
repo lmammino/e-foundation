@@ -21,7 +21,7 @@
         "phpunit/phpunit":              "~4.3",
         "sami/sami":                    "~2.0",
         "squizlabs/php_codesniffer":    "1.*",
-        "doctrine/orm":                 "~2.4"
+        "doctrine/orm":                 ">=2.3,<2.5"
     },
     "suggest": {
         "doctrine/orm": "To enable doctrine integration",
