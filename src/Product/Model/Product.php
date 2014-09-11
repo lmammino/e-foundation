@@ -29,6 +29,8 @@ class Product implements ProductInterface
     use SoftDeletableTrait;
     use TimestampableTrait {
         TimestampableTrait::__construct as __timestampableConstruct;
+        TimestampableTrait::onPrePersist as __timestampableOnPrePersist;
+        TimestampableTrait::onPreUpdate as __timestampableOnPreUpdate;
     }
 
     /**
@@ -189,5 +191,21 @@ class Product implements ProductInterface
         $this->metaDescription = $metaDescription;
 
         return $this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function onPrePersist()
+    {
+        $this->__timestampableOnPrePersist();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function onPreUpdate()
+    {
+        $this->__timestampableOnPreUpdate();
     }
 }
