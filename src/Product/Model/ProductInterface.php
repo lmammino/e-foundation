@@ -21,18 +21,18 @@ interface ProductInterface extends
     TimestampableInterface
 {
     /**
-     * Get product name.
+     * Get product title.
      *
      * @return string
      */
-    public function getName();
+    public function getTitle();
 
     /**
-     * Set product name.
+     * Set product title.
      *
-     * @param string $name
+     * @param string $title
      */
-    public function setName($name);
+    public function setTitle($title);
 
     /**
      * Get permalink/slug.
@@ -49,7 +49,7 @@ interface ProductInterface extends
     public function setSlug($slug);
 
     /**
-     * Get product name.
+     * Get product description.
      *
      * @return string
      */

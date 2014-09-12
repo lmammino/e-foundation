@@ -34,9 +34,9 @@ class Product implements ProductInterface
     }
 
     /**
-     * @var string $name
+     * @var string $title
      */
-    protected $name;
+    protected $title;
 
     /**
      * @var string $slug
@@ -78,17 +78,17 @@ class Product implements ProductInterface
     /**
      * {@inheritDoc}
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
 
         return $this;
     }
