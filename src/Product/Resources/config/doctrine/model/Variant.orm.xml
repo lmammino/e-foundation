@@ -6,7 +6,7 @@
         >
 
     <mapped-superclass name="LMammino\EFoundation\Product\Model\Variant" table="ef_product_variant">
-        <field name="availableOn" column="available_on" type="datetime" />
+        <field name="availableOn" column="available_on" type="datetime" nullable="true" />
         <many-to-one target-entity="LMammino\EFoundation\Product\Model\ProductInterface"
                      field="product"
                      inversed-by="variants">
