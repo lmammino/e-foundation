@@ -3,11 +3,11 @@
 namespace LMammino\EFoundation\Owner\Model;
 
 /**
- * Class OwnerInterface
+ * Interface OwnerInterface
  *
  * @package LMammino\EFoundation\Owner\Model
  */
-class OwnerInterface
+interface OwnerInterface
 {
 
 }
