@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                                       http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="LMammino\EFoundation\Order\Model\Order" table="ef_order">
+    <mapped-superclass name="LMammino\EFoundation\Order\Model\Order" table="ef_order">
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO"/>
         </id>
@@ -15,7 +15,7 @@
         <field name="createdAt" column="created_at" type="datetime"/>
         <field name="updatedAt" column="updated_at" type="datetime" nullable="true"/>
 
-        <one-to-many field="items"
+        <!--<one-to-many field="items"
                      target-entity="LMammino\EFoundation\Order\Model\OrderItemInterface"
                      mapped-by="order"
                      orphan-removal="true">
@@ -31,7 +31,7 @@
             <cascade>
                 <cascade-all/>
             </cascade>
-        </one-to-many>
-    </entity>
+        </one-to-many>-->
+    </mapped-superclass>
 
 </doctrine-mapping>
