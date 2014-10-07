@@ -16,6 +16,8 @@
         <field name="postCode" type="string" length="16"/>
         <field name="street" type="string" length="255"/>
         <field name="city" type="string" length="255"/>
+        <field name="createdAt" column="created_at" type="datetime"/>
+        <field name="updatedAt" column="updated_at" type="datetime" nullable="true"/>
 
         <many-to-one field="country" target-entity="LMammino\EFoundation\Address\Model\CountryInterface">
             <join-column name="country_id" referenced-column-name="id" />
@@ -24,6 +26,11 @@
         <many-to-one field="province" target-entity="LMammino\EFoundation\Address\Model\ProvinceInterface">
             <join-column name="province_id" referenced-column-name="id" />
         </many-to-one>
+
+        <lifecycle-callbacks>
+            <lifecycle-callback type="prePersist" method="onPrePersist"/>
+            <lifecycle-callback type="preUpdate" method="onPreUpdate"/>
+        </lifecycle-callbacks>
     </entity>
 
 </doctrine-mapping>
