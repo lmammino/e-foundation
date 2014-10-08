@@ -55,6 +55,16 @@ class ProvinceTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
+    public function it_should_handle_a_short_name()
+    {
+        $shortName = 'RM';
+        $this->province->setShortName($shortName);
+        $this->assertEquals($shortName, $this->province->getShortName());
+    }
+
+    /**
+     * @test
+     */
     public function it_should_handle_a_country()
     {
         $country = $this->getMock('\LMammino\EFoundation\Address\Model\CountryInterface');

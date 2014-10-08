@@ -35,11 +35,11 @@ class ProductTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_should_handle_a_name()
+    public function it_should_handle_a_title()
     {
-        $name = 'New Shoes';
-        $this->product->setName($name);
-        $this->assertEquals($name, $this->product->getName());
+        $title = 'New Shoes';
+        $this->product->setTitle($title);
+        $this->assertEquals($title, $this->product->getTitle());
     }
 
     /**

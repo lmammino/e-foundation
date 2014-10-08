@@ -247,7 +247,8 @@ class Address implements AddressInterface
 
         $region = $this->city;
         if ($this->province) {
-            $region .= sprintf(' (%s)', $this->province->getISOName());
+            $provinceName = $this->province->getShortName() ? $this->province->getShortName() : $this->province->getName();
+            $region .= sprintf(' (%s)', $provinceName);
         }
 
         $data[] = implode(' ', array($this->postCode, $region));

@@ -137,8 +137,8 @@ USA
 ADDR;
 
         $province = $this->getMock('\LMammino\EFoundation\Address\Model\ProvinceInterface');
-        $province->expects($this->once())
-                 ->method('getISOName')
+        $province->expects($this->atLeastOnce())
+                 ->method('getShortName')
                  ->will($this->returnValue('CA'));
 
         $country = $this->getMock('\LMammino\EFoundation\Address\Model\CountryInterface');
@@ -172,8 +172,8 @@ Infinite Loop, 1
 ADDR;
 
         $province = $this->getMock('\LMammino\EFoundation\Address\Model\ProvinceInterface');
-        $province->expects($this->once())
-            ->method('getISOName')
+        $province->expects($this->atLeastOnce())
+            ->method('getShortName')
             ->will($this->returnValue('CA'));
 
         $this->address->setFirstName('Tim')
