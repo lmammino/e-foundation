@@ -10,7 +10,8 @@
         </id>
 
         <field name="name" type="string" length="255"/>
-        <field name="isoName" type="string" length="3" nullable="true"/>
+        <field name="shortName" type="string" length="16" nullable="true"/>
+        <field name="isoName" type="string" length="16" nullable="true"/>
 
         <many-to-one field="country"
                      target-entity="LMammino\EFoundation\Address\Model\CountryInterface"

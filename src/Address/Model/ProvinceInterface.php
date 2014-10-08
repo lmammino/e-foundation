@@ -44,6 +44,22 @@ interface ProvinceInterface extends IdentifiableInterface
     public function setISOName($isoName);
 
     /**
+     * Get short name
+     *
+     * @return string
+     */
+    public function getShortName();
+
+    /**
+     * Set short name
+     *
+     * @param string $shortName
+     *
+     * @return $this
+     */
+    public function setShortName($shortName);
+
+    /**
      * Get country
      *
      * @return CountryInterface
