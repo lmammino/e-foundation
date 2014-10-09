@@ -9,13 +9,13 @@
             <generator strategy="AUTO" />
         </id>
 
-        <field name="firstName" type="string" length="255"/>
-        <field name="lastName" type="string" length="255"/>
+        <field name="firstName" type="string" length="255" nullable="true"/>
+        <field name="lastName" type="string" length="255" nullable="true"/>
         <field name="companyName" type="string" length="255" nullable="true"/>
         <field name="companyIdentifier" type="string" length="255" nullable="true"/>
-        <field name="postCode" type="string" length="16"/>
-        <field name="street" type="string" length="255"/>
-        <field name="city" type="string" length="255"/>
+        <field name="postCode" type="string" length="16" nullable="true"/>
+        <field name="street" type="string" length="255" nullable="true"/>
+        <field name="city" type="string" length="255" nullable="true"/>
         <field name="createdAt" column="created_at" type="datetime"/>
         <field name="updatedAt" column="updated_at" type="datetime" nullable="true"/>
 
