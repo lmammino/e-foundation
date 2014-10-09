@@ -153,7 +153,7 @@ class Address implements AddressInterface
     /**
      * {@inheritDoc}
      */
-    public function setCountry(CountryInterface $country)
+    public function setCountry(CountryInterface $country = null)
     {
         $this->country = $country;
 
@@ -171,7 +171,7 @@ class Address implements AddressInterface
     /**
      * {@inheritDoc}
      */
-    public function setProvince(ProvinceInterface $province)
+    public function setProvince(ProvinceInterface $province = null)
     {
         $this->province = $province;
 

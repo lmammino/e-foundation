@@ -90,7 +90,7 @@ interface AddressInterface extends IdentifiableInterface, TimestampableInterface
      *
      * @return $this
      */
-    public function setCountry(CountryInterface $country);
+    public function setCountry(CountryInterface $country = null);
 
     /**
      * Get province
@@ -106,7 +106,7 @@ interface AddressInterface extends IdentifiableInterface, TimestampableInterface
      *
      * @return $this
      */
-    public function setProvince(ProvinceInterface $province);
+    public function setProvince(ProvinceInterface $province = null);
 
     /**
      * Get street

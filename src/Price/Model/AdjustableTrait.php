@@ -108,6 +108,25 @@ trait AdjustableTrait
     }
 
     /**
+     * Removes an adjustment by label
+     *
+     * @param string $adjustmentLabel
+     * @return $this
+     */
+    public function removeAdjustmentByLabel($adjustmentLabel)
+    {
+        /** @var AdjustmentInterface $adjustment */
+        foreach ($this->adjustments as $adjustment) {
+            if ($adjustmentLabel == $adjustment->getLabel()) {
+                $this->removeAdjustment($adjustment);
+                return $this;
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * Removes all adjustments
      *
      * @return $this
@@ -171,7 +190,7 @@ trait AdjustableTrait
      */
     protected function onAdjustmentsChange()
     {
-        // does nothing by default
+        $this->adjustmentsTotal = null;
     }
 
     /**
