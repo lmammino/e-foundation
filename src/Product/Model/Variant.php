@@ -57,6 +57,27 @@ class Variant extends BaseVariant implements VariantInterface
     }
 
     /**
+     * Checks if the product is available at a certain date
+     *
+     * @param \DateTime $date
+     * @return bool
+     */
+    public function isAvailableAt(\DateTime $date)
+    {
+        return ($this->availableOn !== null && $this->availableOn <= $date);
+    }
+
+    /**
+     * Checks if the product is available now
+     *
+     * @return bool
+     */
+    public function isAvailableNow()
+    {
+        return $this->isAvailableAt(new \DateTime());
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function setAvailableOn(\DateTime $availableOn = null)
