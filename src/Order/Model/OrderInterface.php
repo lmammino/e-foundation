@@ -25,6 +25,7 @@ interface OrderInterface extends
      */
     const STATE_PENDING     = 'pending';
     const STATE_CONFIRMED   = 'confirmed';
+    const STATE_SHIPPING    = 'shipping';
     const STATE_SHIPPED     = 'shipped';
     const STATE_ABANDONED   = 'abandoned';
     const STATE_CANCELLED   = 'cancelled';
