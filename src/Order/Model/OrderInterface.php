@@ -23,6 +23,7 @@ interface OrderInterface extends
     /**
      * State constants
      */
+    const STATE_NEW         = 'new';
     const STATE_PENDING     = 'pending';
     const STATE_CONFIRMED   = 'confirmed';
     const STATE_SHIPPING    = 'shipping';
@@ -30,6 +31,7 @@ interface OrderInterface extends
     const STATE_ABANDONED   = 'abandoned';
     const STATE_CANCELLED   = 'cancelled';
     const STATE_RETURNED    = 'returned';
+    const STATE_COMPLETED   = 'completed';
 
     /**
      * Check if the order is completed

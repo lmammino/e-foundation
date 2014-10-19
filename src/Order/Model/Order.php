@@ -28,7 +28,7 @@ class Order extends PricedItemsContainer implements OrderInterface
     /**
      * @var string $state
      */
-    protected $state;
+    protected $state = self::STATE_NEW;
 
 
     /**
@@ -77,6 +77,7 @@ class Order extends PricedItemsContainer implements OrderInterface
     public function complete()
     {
         $this->setCompletedAt(new \DateTime());
+        $this->setState(self::STATE_COMPLETED);
 
         return $this;
     }
