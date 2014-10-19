@@ -101,6 +101,86 @@ class Order extends PricedItemsContainer implements OrderInterface
     }
 
     /**
+     * Check if new
+     *
+     * @return bool
+     */
+    public function isNew()
+    {
+        return ($this->state === self::STATE_NEW);
+    }
+
+    /**
+     * Check if pending
+     *
+     * @return bool
+     */
+    public function isPending()
+    {
+        return ($this->state === self::STATE_PENDING);
+    }
+
+    /**
+     * Check if confirmed
+     *
+     * @return bool
+     */
+    public function isConfirmed()
+    {
+        return ($this->state === self::STATE_CONFIRMED);
+    }
+
+    /**
+     * Check if in shipping
+     *
+     * @return bool
+     */
+    public function isShipping()
+    {
+        return ($this->state === self::STATE_SHIPPING);
+    }
+
+    /**
+     * Check if shipped
+     *
+     * @return bool
+     */
+    public function isShipped()
+    {
+        return ($this->state === self::STATE_COMPLETED);
+    }
+
+    /**
+     * Check if abandoned
+     *
+     * @return bool
+     */
+    public function isAbandoned()
+    {
+        return ($this->state === self::STATE_ABANDONED);
+    }
+
+    /**
+     * Check if cancelled
+     *
+     * @return bool
+     */
+    public function isCancelled()
+    {
+        return ($this->state === self::STATE_CANCELLED);
+    }
+
+    /**
+     * Check if returned
+     *
+     * @return bool
+     */
+    public function isReturned()
+    {
+        return ($this->state === self::STATE_RETURNED);
+    }
+
+    /**
      * On pre persist
      */
     public function onPrePersist()
