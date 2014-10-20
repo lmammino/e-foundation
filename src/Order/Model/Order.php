@@ -29,7 +29,7 @@ class Order extends PricedItemsContainer implements OrderInterface
      * @var string $state
      */
     protected $state = self::STATE_NEW;
-    
+
     /**
      * @var \DateTime $completedAt
      */
