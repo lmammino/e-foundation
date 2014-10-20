@@ -37,4 +37,14 @@ trait OwnerAwareTrait
 
         return $this;
     }
+
+    /**
+     * Checks if has an owner
+     *
+     * @return bool
+     */
+    public function hasOwner()
+    {
+        return null !== $this->owner;
+    }
 }
