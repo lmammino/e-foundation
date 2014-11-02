@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           http://raw.github.com/doctrine/doctrine2/master/doctrine-mapping.xsd">
 
@@ -9,12 +10,22 @@
             <generator strategy="AUTO" />
         </id>
 
-        <field name="title" column="title" type="string"/>
-        <field name="slug" column="slug" type="string" unique="true"/>
-        <field name="description" column="description" type="text" nullable="true"/>
+        <field name="title" column="title" type="string">
+            <gedmo:translatable/>
+        </field>
+        <field name="slug" column="slug" type="string" unique="true">
+            <gedmo:translatable/>
+        </field>
+        <field name="description" column="description" type="text" nullable="true">
+            <gedmo:translatable/>
+        </field>
         <field name="availableOn" column="available_on" type="datetime" nullable="true"/>
-        <field name="metaKeywords" column="meta_keywords" type="string" nullable="true" />
-        <field name="metaDescription" column="meta_description" type="string" nullable="true"/>
+        <field name="metaKeywords" column="meta_keywords" type="string" nullable="true">
+            <gedmo:translatable/>
+        </field>
+        <field name="metaDescription" column="meta_description" type="string" nullable="true">
+            <gedmo:translatable/>
+        </field>
 
         <!--<one-to-many field="attributeValues"
                      target-entity="LMammino\EFoundation\Product\Model\AttributeValueInterface"
@@ -53,6 +64,8 @@
             <lifecycle-callback type="prePersist" method="onPrePersist"/>
             <lifecycle-callback type="preUpdate" method="onPreUpdate"/>
         </lifecycle-callbacks>
+
+        <gedmo:translation entity="Gedmo\Translatable\Entity\Translation" locale="locale"/>
     </mapped-superclass>
 
 </doctrine-mapping>

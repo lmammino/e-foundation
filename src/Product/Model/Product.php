@@ -64,6 +64,11 @@ class Product implements ProductInterface
     protected $metaDescription;
 
     /**
+     * @var string $locale
+     */
+    protected $locale;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -210,6 +215,30 @@ class Product implements ProductInterface
     public function setMetaDescription($metaDescription)
     {
         $this->metaDescription = $metaDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     *
+     * @return $this
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
 
         return $this;
     }
