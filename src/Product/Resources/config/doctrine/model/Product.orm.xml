@@ -13,7 +13,7 @@
         <field name="title" column="title" type="string">
             <gedmo:translatable/>
         </field>
-        <field name="slug" column="slug" type="string" unique="true">
+        <field name="slug" column="slug" type="string">
             <gedmo:translatable/>
         </field>
         <field name="description" column="description" type="text" nullable="true">
